@@ -1,5 +1,5 @@
 {
-  "name": "with-typescript",
+  "name": "jackmerrilldotcom",
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
@@ -22,5 +22,5 @@
     "tailwindcss": "^2.0.4",
     "typescript": "4.0"
   },
-  "license": "MIT"
+  "license": "MPL-2.0"
 }
