@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import Logo from './Images/Logo';
+import { useEffect, useState } from "react";
 
 const Navbar = ({ links }: {
     links: {

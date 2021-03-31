@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Navbar from '../components/Navbar'
 
-function GetTimeString(): string {
+function GetTimeString() {
   const hours = new Date().getHours()
 
   if (hours < 12) {
