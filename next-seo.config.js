@@ -4,6 +4,7 @@ export default {
     locale: 'en_US',
     url: 'https://jackmerrill.com/',
     site_name: 'Jack Merrill',
+    title: 'Jack Merrill',
     description: 'Fullstack Developer and Graphic/UI designer.',
     images: [
       {
