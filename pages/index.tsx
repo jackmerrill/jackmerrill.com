@@ -1,13 +1,17 @@
 import Link from 'next/link'
+import Image from 'next/image';
 import { useEffect, useState } from 'react'
 import CodeIcon from '../components/Images/CodeIcon'
 import DesignIcon from '../components/Images/DesignIcon'
 import GitHubIcon from '../components/Images/GitHubIcon';
 import MailIcon from '../components/Images/MailIcon';
 import TwitterIcon from '../components/Images/TwitterIcon';
+import Head from 'next/head';
 
 const IndexPage = () => {
-  const [timeString, setTimeString] = useState('Morning')
+  const [timeString, setTimeString] = useState(
+    (new Date().getHours() < 12 ? 'Morning' : (new Date().getHours() >= 12 && new Date().getHours() <= 17 ? 'Afternoon' : (new Date().getHours() >= 17 && new Date().getHours() <= 24 ? 'Evening' : 'Morning')))
+  )
 
   useEffect(() => {
     const hours = new Date().getHours()
@@ -25,6 +29,9 @@ const IndexPage = () => {
 
   return (
     <>
+      <Head>
+        <meta name='description' content='Graphic Designer and Fullstack Developer.' />
+      </Head>
       <header className="flex flex-wrap flex-col overflow-hidden space-y-2 lg:px-36 items-center justify-center h-screen w-full">
         <div className="my-3 px-3 w-full text-center">
           <h1 className="text-white font-extrabold md:text-6xl text-3xl">Good <span className="text-blue-500">{timeString}</span>! I&apos;m <span className="text-purple-500">Jack Merrill</span>.</h1>
@@ -107,38 +114,38 @@ const IndexPage = () => {
         <div className="flex flex-wrap w-full -mx-1 overflow-hidden justify-center">
 
           <div className="flex my-1 w-full overflow-hidden rounded-xl relative h-36">
-            <img src='/img/Stryx.png' className='absolute transition duration-250 hover:scale-105 rounded-xl w-full h-full object-cover object-top filter blur-xl hover:blur-0' />
+            <Image alt='Stryx Photo' layout='fill' src='/img/Stryx.png' objectFit='cover' objectPosition='top' className='absolute rounded-xl filter blur-xl' />
             <div className='flex flex-wrap items-center content-center justify-end w-full h-full text-right transition transform duration-200 p-12 space-y-2'>
               <h1 className='w-full text-white font-bold text-3xl'>Stryx</h1>
               <p className='w-full text-white font-light text-xs'>Roblox Group Management made easy</p>
-              <a className='flex bg-green-500 items-center justify-center px-2 py-1 rounded-xl text-white w-1/3' href='https://stryx.cloud' target='_blank'>Visit</a>
+              <a className='flex bg-green-500 items-center justify-center px-2 py-1 rounded-xl text-white w-2/3 sm:w-1/3' href='https://stryx.cloud' target='_blank' rel='noreferrer'>Visit</a>
             </div>
           </div>
           
           <div className="flex my-1 w-full overflow-hidden rounded-xl relative h-36">
-            <img src='/img/Snacc.chat.png' className='absolute transition duration-250 hover:scale-105 rounded-xl w-full h-full object-cover object-top filter blur-xl hover:blur-0' />
+            <Image alt='Snacc.chat Photo' layout='fill' src='/img/Snacc.chat.png' objectFit='cover' objectPosition='top' className='absolute rounded-xl filter blur-xl' />
             <div className='flex flex-wrap items-center content-center justify-end w-full h-full text-right transition transform duration-200 p-12 space-y-2'>
               <h1 className='w-full text-white font-bold text-3xl'>Snacc.chat</h1>
-              <p className='w-full text-white font-light text-xs'>Made in 24 hours at <a className='font-bold' href='https://codeday.org' target='_blank'>CodeDay</a>, Snacc.chat is a simple social network for programmers alike.</p>
-              <a className='flex bg-green-500 items-center justify-center px-2 py-1 rounded-xl text-white w-1/3' href='https://snacc.chat' target='_blank'>Visit</a>
+              <p className='w-full text-white font-light text-xs'>Made in 24 hours at <a className='font-bold' href='https://codeday.org' target='_blank' rel='noreferrer'>CodeDay</a>, Snacc.chat is a simple social network for programmers alike.</p>
+              <a className='flex bg-green-500 items-center justify-center px-2 py-1 rounded-xl text-white w-2/3 sm:w-1/3' href='https://snacc.chat' target='_blank' rel='noreferrer'>Visit</a>
             </div>
           </div>
 
           <div className="flex my-1 w-full overflow-hidden rounded-xl relative h-36">
-            <img src='/img/FRCMS.png' className='absolute transition duration-250 hover:scale-105 rounded-xl w-full h-full object-cover object-top filter blur-xl hover:blur-0' />
+            <Image alt='FRCMS Docs Photo' layout='fill' src='/img/FRCMS.png' objectFit='cover' objectPosition='top' className='absolute rounded-xl filter blur-xl' />
             <div className='flex flex-wrap items-center content-center justify-end w-full h-full text-right transition transform duration-200 p-12 space-y-2'>
-              <h1 className='w-full text-white font-bold text-3xl'>FRCMS (WIP)</h1>
-              <p className='w-full text-white font-light text-xs'>FIRST Robotics Content Management System</p>
-              <a className='flex bg-green-500 items-center justify-center px-2 py-1 rounded-xl text-white w-1/3' href='https://dev.frcms.app' target='_blank'>Visit</a>
+              <h1 className='w-full text-white font-bold text-3xl'>FRCMS</h1>
+              <p className='w-full text-white font-light text-xs'>FIRST Robotics CMS (WIP)</p>
+              <a className='flex bg-green-500 items-center justify-center px-2 py-1 rounded-xl text-white w-2/3 sm:w-1/3' href='https://dev.frcms.app' target='_blank' rel='noreferrer'>Visit</a>
             </div>
           </div>
 
           <div className="flex my-1 w-full overflow-hidden rounded-xl relative h-36">
-            <img src='/img/Ricky.cat.png' className='absolute transition duration-250 hover:scale-105 rounded-xl w-full h-full object-cover object-top filter blur-xl hover:blur-0' />
+            <Image alt='Ricky.cat Photo' layout='fill' src='/img/Ricky.cat.png' objectFit='cover' objectPosition='top' className='absolute rounded-xl filter blur-xl' />
             <div className='flex flex-wrap items-center content-center justify-end w-full h-full text-right transition transform duration-200 p-12 space-y-2'>
               <h1 className='w-full text-white font-bold text-3xl'>Ricky.cat</h1>
               <p className='w-full text-white font-light text-xs'>My first Next.js project! A place to share my cat. Discontinued.</p>
-              <a className='flex bg-green-500 items-center justify-center px-2 py-1 rounded-xl text-white w-1/3' href='https://ricky.cat' target='_blank'>Visit</a>
+              <a className='flex bg-green-500 items-center justify-center px-2 py-1 rounded-xl text-white w-2/3 sm:w-1/3' href='https://ricky.cat' target='_blank' rel='noreferrer'>Visit</a>
             </div>
           </div>
         </div>
@@ -149,28 +156,28 @@ const IndexPage = () => {
         <p className='w-full font-semibold text-white text-center text-xl'>Here are a few designs I&apos;ve made!</p>
         <div className="flex flex-wrap w-full -mx-1 overflow-hidden justify-center">
           <div className="flex flex-wrap -mx-3 overflow-hidden">
-            <div className="my-3 px-3 w-1/3 overflow-hidden">
-              <img src='/img/designs/PersonalLogo.png' className='rounded-xl' />
+            <div className="my-3 px-3 w-1/2 md:w-1/3 overflow-hidden">
+              <Image alt='Personal Logo' width='1080px' height='1080px' src='/img/designs/PersonalLogo.png' className='rounded-xl' />
             </div>
 
-            <div className="my-3 px-3 w-1/3 overflow-hidden">
-              <img src='/img/designs/AppIcon.png' className='rounded-xl' />
+            <div className="my-3 px-3 w-1/2 md:w-1/3 overflow-hidden">
+              <Image alt='Demo App Icon' width='1080px' height='1080px' src='/img/designs/AppIcon.png' className='rounded-xl' />
             </div>
 
-            <div className="my-3 px-3 w-1/3 overflow-hidden">
-              <img src='/img/designs/Stryx.png' className='rounded-xl' />
+            <div className="my-3 px-3 w-1/2 md:w-1/3 overflow-hidden">
+              <Image alt='Stryx Logo' width='1080px' height='1080px' src='/img/designs/Stryx.png' className='rounded-xl' />
             </div>
 
-            <div className="my-3 px-3 w-1/3 overflow-hidden">
-              <img src='/img/designs/Comet.png' className='rounded-xl bg-gray-600' />
+            <div className="my-3 px-3 w-1/2 md:w-1/3 overflow-hidden">
+              <Image alt='Comet Design' width='1080px' height='1080px' src='/img/designs/Comet.png' className='rounded-xl bg-gray-600' />
             </div>
 
-            <div className="my-3 px-3 w-1/3 overflow-hidden">
-              <img src='/img/designs/IsometricBuilding.png' className='rounded-xl' />
+            <div className="my-3 px-3 w-1/2 md:w-1/3 overflow-hidden">
+              <Image alt='Isometric Building Design' width='1080px' height='1080px' src='/img/designs/IsometricBuilding.png' className='rounded-xl' />
             </div>
 
-            <div className="my-3 px-3 w-1/3 overflow-hidden">
-              <img src='/img/designs/Grape.png' className='rounded-xl' />
+            <div className="my-3 px-3 w-1/2 md:w-1/3 overflow-hidden">
+              <Image alt='Grape Logo' width='1080px' height='1080px' src='/img/designs/Grape.png' className='rounded-xl' />
             </div>
           </div>
         </div>
@@ -182,7 +189,8 @@ const IndexPage = () => {
           <a
             href='https://github.com/jackmerrill'
             target='_blank'
-            className='flex justify-center items-center px-10 py-4 w-5/6 lg:w-1/4 bg-github rounded-xl text-white font-bold text-xl'
+            className='flex justify-center items-center px-10 py-4 w-11/12 lg:w-1/4 bg-github rounded-xl text-white font-bold text-xl'
+            rel='noreferrer'
           >
             <GitHubIcon className='text-white h-6 w-6 mr-3'/>
             GitHub Profile
@@ -192,7 +200,8 @@ const IndexPage = () => {
           <a
             href='mailto:me@jackmerrill.com'
             target='_blank'
-            className='flex justify-center items-center px-10 py-4 w-5/6 lg:w-1/4 bg-gray-900 rounded-xl text-white font-bold text-xl'
+            className='flex justify-center items-center px-10 py-4 w-11/12 lg:w-1/4 bg-gray-900 rounded-xl text-white font-bold text-xl'
+            rel='noreferrer'
           >
             <MailIcon className='text-white h-6 w-6 mr-3'/>
             Email
@@ -202,7 +211,8 @@ const IndexPage = () => {
           <a
             href='https://twitter.com/jack__merrill'
             target='_blank'
-            className='flex justify-center items-center px-10 py-4 w-5/6 lg:w-1/4 bg-twitter rounded-xl text-white font-bold text-xl'
+            className='flex justify-center items-center px-10 py-4 w-11/12 lg:w-1/4 bg-twitter rounded-xl text-white font-bold text-xl'
+            rel='noreferrer'
           >
             <TwitterIcon className='text-white h-6 w-6 mr-3'/>
             Twitter
