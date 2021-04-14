@@ -44,8 +44,8 @@ const Navbar = ({ links }: {
                 </div>
             </button>
           </div>
-          <div className={collapsed ? 'md:flex flex-grow items-center hidden' : 'md:flex flex-grow items-center'} id="navbar">
-            <ul className="flex flex-col md:flex-row list-none ml-auto items-center">
+          <div className={`md:flex flex-grow items-center md:opacity-1 transition-fadeDown transform ease-in-out ${collapsed ? '-translate-y-1 h-0 opacity-0' : 'translate-y-1 opacity-1 h-10'}`} id="navbar">
+            <ul className="flex list-none ml-auto items-center">
               {links.map(({ label, href }) => (
                 <li className="nav-item">
                   <div className="px-3 py-2 flex items-center leading-snug text-white">

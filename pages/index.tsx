@@ -47,11 +47,11 @@ const IndexPage = () => {
         </div>
       </header>
       <div className='bg-gradient-to-b from-purple-600 to-purple-700 h-full lg:max-h-96'>
-        <div className='flex flex-wrap p-16 space-y-6'>
+        <div className='flex flex-wrap py-16 px-4 p lg:p-16 space-y-6'>
           <div className='w-full overflow-hidden'>
             <h1 className='text-white text-4xl font-bold text-center'>Nice to meet you!</h1>
           </div>
-          <div className='w-full px-48'>
+          <div className='w-full px-12 lg:px-48'>
             <p className='text-white text-2xl text-center'>
               I&apos;m Jack, a Graphic/UI Designer and Fullstack Developer from Chicago. Since I started
               programming in 2014, I&apos;ve used Python, NodeJS, HTML and CSS. Nowadays, I prefer to
@@ -101,7 +101,7 @@ const IndexPage = () => {
           </div>
         </div>
       </div>
-      <div id='projects' className='flex flex-wrap justify-center px-64 pt-24 space-y-3'>
+      <div id='projects' className='flex flex-wrap justify-center px-12 lg:px-64 pt-24 space-y-3'>
         <h1 className='w-full font-bold text-white text-center text-3xl'>My recent work</h1>
         <p className='w-full font-semibold text-white text-center text-xl'>Here are a few projects I&apos;ve been working on!</p>
         <div className="flex flex-wrap w-full -mx-1 overflow-hidden justify-center">
@@ -144,7 +144,7 @@ const IndexPage = () => {
         </div>
       </div>
       
-      <div id='designs' className='flex flex-wrap justify-center px-64 pt-24 space-y-3'>
+      <div id='designs' className='flex flex-wrap justify-center px-12 lg:px-64 pt-24 space-y-3'>
         <h1 className='w-full font-bold text-white text-center text-3xl'>My Designs</h1>
         <p className='w-full font-semibold text-white text-center text-xl'>Here are a few designs I&apos;ve made!</p>
         <div className="flex flex-wrap w-full -mx-1 overflow-hidden justify-center">
@@ -182,7 +182,7 @@ const IndexPage = () => {
           <a
             href='https://github.com/jackmerrill'
             target='_blank'
-            className='flex justify-center items-center px-10 py-4 w-1/4 bg-github rounded-xl text-white font-bold text-xl'
+            className='flex justify-center items-center px-10 py-4 w-5/6 lg:w-1/4 bg-github rounded-xl text-white font-bold text-xl'
           >
             <GitHubIcon className='text-white h-6 w-6 mr-3'/>
             GitHub Profile
@@ -192,7 +192,7 @@ const IndexPage = () => {
           <a
             href='mailto:me@jackmerrill.com'
             target='_blank'
-            className='flex justify-center items-center px-10 py-4 w-1/4 bg-gray-900 rounded-xl text-white font-bold text-xl'
+            className='flex justify-center items-center px-10 py-4 w-5/6 lg:w-1/4 bg-gray-900 rounded-xl text-white font-bold text-xl'
           >
             <MailIcon className='text-white h-6 w-6 mr-3'/>
             Email
@@ -202,7 +202,7 @@ const IndexPage = () => {
           <a
             href='https://twitter.com/jack__merrill'
             target='_blank'
-            className='flex justify-center items-center px-10 py-4 w-1/4 bg-twitter rounded-xl text-white font-bold text-xl'
+            className='flex justify-center items-center px-10 py-4 w-5/6 lg:w-1/4 bg-twitter rounded-xl text-white font-bold text-xl'
           >
             <TwitterIcon className='text-white h-6 w-6 mr-3'/>
             Twitter

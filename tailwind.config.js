@@ -14,6 +14,9 @@ module.exports = {
         'tailwind': '#38B2AC',
         'github': '#181717',
         'twitter': '#1DA1F2',
+      },
+      transitionProperty: {
+        'fadeDown': 'height opacity'
       }
     },
   },
