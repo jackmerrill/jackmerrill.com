@@ -27,7 +27,7 @@ const Navbar = ({ links }: {
     })
 
     return (
-      <nav className={`fixed w-full flex flex-wrap items-center justify-between px-2 py-6 navbar-expand-lg bg-gray-800 ${atTop ? '' : 'shadow-md'}`}>
+      <nav className={`fixed w-full flex flex-wrap items-center justify-between px-2 py-6 navbar-expand-lg z-30 bg-gray-800 ${atTop ? '' : 'shadow-md'}`}>
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between md:w-auto px-4 md:static md:block md:justify-start items-center">
             <div className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap text-white">
