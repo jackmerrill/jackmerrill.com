@@ -1,4 +1,5 @@
 export default {
+  title: 'Jack Merrill',
   openGraph: {
     type: 'website',
     locale: 'en_US',
