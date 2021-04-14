@@ -33,7 +33,7 @@ const IndexPage = () => {
           <h2 className="text-white font-bold md:text-4xl text-2xl">A Graphic and UI Designer and Fullstack Developer from the Windy City.</h2>
         </div>
         <div className="inline-flex flex-wrap md:space-y-0 space-y-4 pt-4 items-center justify-center content-center md:space-x-4 my-3 px-3 w-full text-center">
-          <Link href="/portfolio">
+          <Link href="#projects">
             <a className="bg-gradient-to-r from-green-400 to-blue-500 px-4 py-2 rounded-xl font-bold text-white md:w-1/6 w-full">
               See my Work
             </a>
