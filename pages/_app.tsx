@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { AppProps } from 'next/app'
-
+import SEO from '../next-seo.config';
+import { DefaultSeo } from 'next-seo';
 import 'tailwindcss/tailwind.css'
 import { useRouter } from 'next/dist/client/router';
 import Navbar from '../components/Navbar';
@@ -33,6 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           { label: 'My Work', href: '#projects' },
           { label: 'Designs', href: '#designs' },
         ]} />
+        <DefaultSeo {...SEO}/>
         <Component {...pageProps} />
         <Footer />
       </main>
