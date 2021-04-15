@@ -27,6 +27,12 @@ const IndexPage = () => {
     }
   })
 
+  function calculateAge() {
+    var ageDifMs = Date.now() - new Date('July 13, 2004').getTime();
+    var ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  }
+
   return (
     <>
       <Head>
@@ -37,7 +43,7 @@ const IndexPage = () => {
           <h1 className="text-white font-extrabold md:text-6xl text-3xl">Good <span className="text-blue-500">{timeString}</span>! I&apos;m <span className="text-purple-500">Jack Merrill</span>.</h1>
         </div>
         <div className="my-3 px-3 w-full text-center">
-          <h2 className="text-white font-bold md:text-4xl text-2xl">A Graphic and UI Designer and Fullstack Developer from the Windy City.</h2>
+          <h2 className="text-white font-bold md:text-4xl text-2xl">A {calculateAge()} year old Graphic and UI Designer and Fullstack Developer from the Windy City.</h2>
         </div>
         <div className="inline-flex flex-wrap md:space-y-0 space-y-4 pt-4 items-center justify-center content-center md:space-x-4 my-3 px-3 w-full text-center">
           <Link href="#projects">
@@ -60,7 +66,7 @@ const IndexPage = () => {
           </div>
           <div className='w-full px-12 lg:px-48'>
             <p className='text-white text-2xl text-center'>
-              I&apos;m Jack, a Graphic/UI Designer and Fullstack Developer from Chicago. Since I started
+              I&apos;m Jack, a {calculateAge()} year old Graphic/UI Designer and Fullstack Developer from Chicago. Since I started
               programming in 2014, I&apos;ve used Python, NodeJS, HTML and CSS. Nowadays, I prefer to
               use NextJS, TailwindCSS, and NodeJS. Being a fullstack developer, I&apos;ve
               had to create numerous logos and brands for various projects of mine.
