@@ -85,6 +85,7 @@ const IndexPage = () => {
                 <li className='text-gray-800 text-lg font-light'>Node.js / Express</li>
                 <li className='text-gray-800 text-lg font-light'>MongoDB</li>
                 <li className='text-gray-800 text-lg font-light'>PostgreSQL</li>
+                <li className='text-gray-800 text-lg font-light'>Docker</li>
               </ol>
             </div>
           </div>
@@ -100,6 +101,7 @@ const IndexPage = () => {
               <h2 className='text-purple-500 font-bold text-xl'>Tools I use:</h2>
               <ol>
                 <li className='text-gray-800 text-lg font-light'>Affinity Designer</li>
+                <li className='text-gray-800 text-lg font-light'>Figma</li>
                 <li className='text-gray-800 text-lg font-light'>TailwindCSS</li>
                 <li className='text-gray-800 text-lg font-light'>Bootstrap</li>
                 <li className='text-gray-800 text-lg font-light'>React.js</li>
