@@ -122,10 +122,19 @@ const IndexPage = () => {
         <div className="flex flex-wrap w-full -mx-1 overflow-hidden justify-center">
 
           <div className="flex my-1 w-full overflow-hidden rounded-xl relative h-36">
+            {/* <Image alt='Stryx Photo' layout='fill' src='/img/Stryx.png' objectFit='cover' objectPosition='top' className='absolute rounded-xl filter blur-xl' /> */}
+            <div className='flex flex-wrap items-center content-center justify-end w-full h-full text-right transition transform duration-200 p-12 space-y-2'>
+              <h1 className='w-full text-white font-bold text-3xl'>Lunar Design</h1>
+              <p className='w-full text-white font-light text-xs'>American counterpart of the French-American duo making software that&apos;s out of this world.</p>
+              <a className='flex bg-green-500 items-center justify-center px-2 py-1 rounded-xl text-white w-2/3 sm:w-1/3' href='https://github.com/designbylunar/' target='_blank' rel='noreferrer'>Visit</a>
+            </div>
+          </div>
+
+          <div className="flex my-1 w-full overflow-hidden rounded-xl relative h-36">
             <Image alt='Stryx Photo' layout='fill' src='/img/Stryx.png' objectFit='cover' objectPosition='top' className='absolute rounded-xl filter blur-xl' />
             <div className='flex flex-wrap items-center content-center justify-end w-full h-full text-right transition transform duration-200 p-12 space-y-2'>
               <h1 className='w-full text-white font-bold text-3xl'>Stryx</h1>
-              <p className='w-full text-white font-light text-xs'>Roblox Group Management made easy</p>
+              <p className='w-full text-white font-light text-xs'>Roblox Group Management made easy (defunct, no long associated)</p>
               <a className='flex bg-green-500 items-center justify-center px-2 py-1 rounded-xl text-white w-2/3 sm:w-1/3' href='https://stryx.cloud' target='_blank' rel='noreferrer'>Visit</a>
             </div>
           </div>
@@ -152,7 +161,7 @@ const IndexPage = () => {
             <Image alt='Ricky.cat Photo' layout='fill' src='/img/Ricky.cat.png' objectFit='cover' objectPosition='top' className='absolute rounded-xl filter blur-xl' />
             <div className='flex flex-wrap items-center content-center justify-end w-full h-full text-right transition transform duration-200 p-12 space-y-2'>
               <h1 className='w-full text-white font-bold text-3xl'>Ricky.cat</h1>
-              <p className='w-full text-white font-light text-xs'>My first Next.js project! A place to share my cat. Discontinued.</p>
+              <p className='w-full text-white font-light text-xs'>My first Next.js project! A place to share my cat. Discontinued (for now).</p>
               <a className='flex bg-green-500 items-center justify-center px-2 py-1 rounded-xl text-white w-2/3 sm:w-1/3' href='https://ricky.cat' target='_blank' rel='noreferrer'>Visit</a>
             </div>
           </div>
@@ -186,6 +195,18 @@ const IndexPage = () => {
 
             <div className="my-3 px-3 w-1/2 md:w-1/3 overflow-hidden">
               <Image alt='Grape Logo' width='1080px' height='1080px' src='/img/designs/Grape.png' className='rounded-xl' />
+            </div>
+
+            <div className="my-3 px-3 w-1/2 md:w-1/3 overflow-hidden">
+              <Image alt='New Stryx Logo' width='1080px' height='1080px' src='/img/designs/StryxNew.png' className='rounded-xl' />
+            </div>
+            
+            <div className="my-3 px-3 w-1/2 md:w-1/3 overflow-hidden">
+              <Image alt='Nyxx Logo' width='1080px' height='1080px' src='/img/designs/Nyxx.png' className='rounded-xl' />
+            </div>
+            
+            <div className="my-3 px-3 w-1/2 md:w-1/3 overflow-hidden">
+              <Image alt='Lunar Design Logo' width='1080px' height='1080px' src='/img/designs/LunarDesign.png' className='rounded-xl' />
             </div>
           </div>
         </div>
