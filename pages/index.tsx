@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image';
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import CodeIcon from '../components/Images/CodeIcon'
 import DesignIcon from '../components/Images/DesignIcon'
 import GitHubIcon from '../components/Images/GitHubIcon';
@@ -8,10 +8,25 @@ import MailIcon from '../components/Images/MailIcon';
 import TwitterIcon from '../components/Images/TwitterIcon';
 import Head from 'next/head';
 
+import Navbar from '../components/Navbar';
+import useOnScreen from '../util/hooks/useOnScreen';
+
 const IndexPage = () => {
   const [timeString, setTimeString] = useState(
     (new Date().getHours() < 12 ? 'Morning' : (new Date().getHours() >= 12 && new Date().getHours() <= 17 ? 'Afternoon' : (new Date().getHours() >= 17 && new Date().getHours() <= 24 ? 'Evening' : 'Morning')))
   )
+
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const graphicsRef = useRef(null);
+  const projectsRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const viewingHome = useOnScreen(homeRef)
+  const viewingAbout = useOnScreen(aboutRef)
+  const viewingGraphics = useOnScreen(graphicsRef)
+  const viewingProjects = useOnScreen(projectsRef)
+  const viewingContact = useOnScreen(contactRef)
 
   useEffect(() => {
     const hours = new Date().getHours()
@@ -33,12 +48,21 @@ const IndexPage = () => {
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
+
+
   return (
     <>
       <Head>
         <meta name='description' content='Graphic Designer and Fullstack Developer.' />
       </Head>
-      <header className="flex flex-wrap flex-col overflow-hidden space-y-2 lg:px-36 items-center justify-center h-screen w-full">
+      <Navbar views={[
+        { view: 'Home', viewing: viewingHome },
+        { view: 'About', viewing: viewingAbout },
+        { view: 'Projects', viewing: viewingProjects },
+        { view: 'Graphics', viewing: viewingGraphics },
+        { view: 'Contact', viewing: viewingContact },
+      ]} />
+      <header className="flex flex-wrap flex-col overflow-hidden space-y-2 lg:px-36 items-center justify-center h-screen w-full" ref={homeRef}>
         <div className="my-3 px-3 w-full text-center">
           <h1 className="text-white font-extrabold md:text-6xl text-3xl">Good <span className="text-blue-500">{timeString}</span>! I&apos;m <span className="text-purple-500">Jack Merrill</span>.</h1>
         </div>
@@ -59,7 +83,7 @@ const IndexPage = () => {
           </Link>
         </div>
       </header>
-      <div className='bg-gradient-to-b from-purple-600 to-purple-700 h-full lg:max-h-96'>
+      <div className='bg-gradient-to-b from-purple-600 to-purple-700 h-full lg:max-h-96' ref={aboutRef}>
         <div className='flex flex-wrap py-16 px-4 p lg:p-16 space-y-6'>
           <div className='w-full overflow-hidden'>
             <h1 className='text-white text-4xl font-bold text-center'>Nice to meet you!</h1>
@@ -116,7 +140,7 @@ const IndexPage = () => {
           </div>
         </div>
       </div>
-      <div id='projects' className='flex flex-wrap justify-center px-12 lg:px-64 pt-24 space-y-3'>
+      <div id='projects' className='flex flex-wrap justify-center px-12 lg:px-64 pt-24 space-y-3' ref={projectsRef}>
         <h1 className='w-full font-bold text-white text-center text-3xl'>My recent work</h1>
         <p className='w-full font-semibold text-white text-center text-xl'>Here are a few projects I&apos;ve been working on!</p>
         <div className="flex flex-wrap w-full -mx-1 overflow-hidden justify-center">
@@ -168,7 +192,7 @@ const IndexPage = () => {
         </div>
       </div>
       
-      <div id='designs' className='flex flex-wrap justify-center px-12 lg:px-64 pt-24 space-y-3'>
+      <div id='designs' className='flex flex-wrap justify-center px-12 lg:px-64 pt-24 space-y-3' ref={graphicsRef}>
         <h1 className='w-full font-bold text-white text-center text-3xl'>My Designs</h1>
         <p className='w-full font-semibold text-white text-center text-xl'>Here are a few designs I&apos;ve made!</p>
         <div className="flex flex-wrap w-full -mx-1 overflow-hidden justify-center">
@@ -212,7 +236,7 @@ const IndexPage = () => {
         </div>
       </div>
 
-      <div id='contact' className='flex flex-wrap justify-center p-12 space-y-4'>
+      <div id='contact' className='flex flex-wrap justify-center p-12 space-y-4' ref={contactRef}>
         <h1 className='text-white font-bold text-3xl'>Want to contact me?</h1>
         <div className='flex align-middle justify-center w-full'>
           <a

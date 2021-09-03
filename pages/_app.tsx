@@ -4,7 +4,6 @@ import SEO from '../next-seo.config';
 import { DefaultSeo } from 'next-seo';
 import 'tailwindcss/tailwind.css'
 import { useRouter } from 'next/dist/client/router';
-import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -29,11 +28,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     <div id='app'>
       <main className="bg-gray-800 w-full h-full min-h-screen">
         <div id='loader' className={`flex justify-center items-center align-middle fixed dark:bg-gray-800 ${loading ? 'h-screen w-screen z-50 opacity-100' : 'z-10 opacity-0'} transform transition-all duration-300`} />
-        <Navbar links={[
-          { label: 'Home', href: '/' },
-          { label: 'My Work', href: '#projects' },
-          { label: 'Designs', href: '#designs' },
-        ]} />
         <DefaultSeo {...SEO}/>
         <Component {...pageProps} />
         <Footer />

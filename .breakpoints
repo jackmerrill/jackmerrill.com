@@ -1,0 +1,18 @@
+{
+  "files": {
+    "components/Navbar.tsx": [
+      {
+        "id": "5aa0d634-c476-4ab2-9957-d364b66311b2",
+        "line": 2,
+        "version": 15,
+        "index": 39
+      },
+      {
+        "id": "01e112b0-3705-4b70-bf88-5b2716dd492d",
+        "line": 64,
+        "version": 35,
+        "index": 2597
+      }
+    ]
+  }
+}
