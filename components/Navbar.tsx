@@ -7,13 +7,13 @@ import Logo from '../components/Images/Logo';
 
 const navigation = [
   { name: 'Home', href: '#', current: true },
-  { name: 'About', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Graphics', href: '#', current: false },
-  { name: 'Contact', href: '#', current: false },
+  { name: 'About', href: '#about', current: false },
+  { name: 'Projects', href: '#projects', current: false },
+  { name: 'Graphics', href: '#graphics', current: false },
+  { name: 'Contact', href: '#contact', current: false },
 ];
 
-function classNames(...classes) {
+function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -35,7 +35,9 @@ const Navbar = ({ views }: { views: { view: string, viewing: boolean }[] }) => {
 
             const currentlyViewing = views.find((view) => view.viewing === true)
             navigation.forEach((nav) => nav.current = false)
-            navigation.find((nav) => nav.name === currentlyViewing.view).current = true
+            if (currentlyViewing) {
+              navigation.find((nav) => nav.name === currentlyViewing.view).current = true
+            }
         })
     })
 
@@ -43,7 +45,6 @@ const Navbar = ({ views }: { views: { view: string, viewing: boolean }[] }) => {
     <Disclosure as="nav" className={`fixed w-full z-50 bg-gray-800 ${atTop ? '' : 'shadow-lg'}`}>
       {({ open }) => (
         <>
-        <p>{views}</p>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
@@ -56,6 +57,10 @@ const Navbar = ({ views }: { views: { view: string, viewing: boolean }[] }) => {
                       <a
                         key={item.name}
                         href={item.href}
+                        id={item.name + item.href}
+                        onClick={(e) => {
+                          document.getElementById(item.name + item.href).dispatchEvent(new CustomEvent('scroll'));
+                        }}
                         className={classNames(
                           item.current
                             ? 'bg-gray-900 text-white'

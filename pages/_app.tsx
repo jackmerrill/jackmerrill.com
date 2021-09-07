@@ -32,6 +32,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
         <Footer />
       </main>
+      <style jsx>{`
+        html, body {
+          scroll-behavior: smooth;
+        }
+      `}</style>
     </div>
   </>
 }
