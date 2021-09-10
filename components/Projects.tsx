@@ -18,11 +18,32 @@ const projects = [
     href: 'https://snacc.chat',
     category: { name: 'CodeDay', color: 'bg-red-100 text-red-800' },
     description:
-      'Amazing Ro-Tech solutions for everyone, completely free.',
+      'A social network made in 24 hours at CodeDay.',
+  },
+  {
+    title: 'SCP Mobile',
+    href: 'https://github.com/jackmerrill/SCP-Mobile',
+    category: { name: 'Project', color: 'bg-purple-100 text-purple-800' },
+    description:
+      'Mobile (iOS) app for the SCP Wiki. Made in 24 hours at CodeDay.',
+  },
+  {
+    title: 'Family Guy Quotes bot',
+    href: 'https://github.com/jackmerrill/FamilyGuyQuotesBot',
+    category: { name: 'Project', color: 'bg-purple-100 text-purple-800' },
+    description:
+      'Uses Discord slash commands to send random Family Guy quotes.',
+  },
+  {
+    title: 'OOFS',
+    href: 'https://github.com/oofs-project/oofs',
+    category: { name: 'Project', color: 'bg-purple-100 text-purple-800' },
+    description:
+      'Online Orientated File Storage. Made in 24 hours at CodeDay. Won Best in Show.',
   },
 ]
 
-function classNames(...classes) {
+function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -39,7 +60,7 @@ export default function Projects() {
           <p className="mt-3 text-lg text-gray-200 sm:mt-4">
             UX Engineer / Web Developer for
             {' '}
-            <a href="merch.co" className="text-blue-400 font-bold" target="_blank">
+            <a href="https://merch.co" className="text-blue-400 font-bold" target="_blank">
               Merch
             </a>
             .
@@ -68,6 +89,7 @@ export default function Projects() {
           ))}
         </div>
       </div>
+      <p className="w-full text-center font-bold py-6">Looking for more? <a className="text-blue-100" href="https://github.com/jackmerrill" target="_blank">Check my GitHub.</a></p>
     </div>
   )
 }
