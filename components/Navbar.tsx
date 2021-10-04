@@ -1,7 +1,6 @@
-import Link from "next/link";
-import { Fragment, useState, useEffect } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import { useState, useEffect } from 'react'
+import { Disclosure } from '@headlessui/react'
+import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
 import Logo from '../components/Images/Logo';
 
@@ -51,20 +50,20 @@ const Navbar = ({ views }: { views: { view: string, viewing: boolean }[] }) => {
     <Disclosure as="nav" className={`fixed w-full z-50 bg-black border-b-2 border-white ${atTop ? '' : 'shadow-lg'}`}>
       {({ open }) => (
         <>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <Logo className="h-8 w-8" />
+                  <Logo className="w-8 h-8" />
                 </div>
                 <div className="hidden md:block">
-                  <div className="ml-10 flex items-baseline space-x-4">
+                  <div className="flex items-baseline ml-10 space-x-4">
                     {navigation.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
                         id={item.name + item.href}
-                        onClick={(e) => {
+                        onClick={() => {
                           updateCurrent()
                         }}
                         className={classNames(
@@ -81,14 +80,14 @@ const Navbar = ({ views }: { views: { view: string, viewing: boolean }[] }) => {
                   </div>
                 </div>
               </div>
-              <div className="-mr-2 flex md:hidden">
+              <div className="flex -mr-2 md:hidden">
                 {/* Mobile menu button */}
-                <Disclosure.Button className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-gray-800 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
-                    <XIcon className="block h-6 w-6" aria-hidden="true" />
+                    <XIcon className="block w-6 h-6" aria-hidden="true" />
                   ) : (
-                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                    <MenuIcon className="block w-6 h-6" aria-hidden="true" />
                   )}
                 </Disclosure.Button>
               </div>

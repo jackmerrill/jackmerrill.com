@@ -1,4 +1,4 @@
-const Logo = (props) => (
+const Logo = (props: any) => (
     <svg width="100%" height="100%" viewBox="0 0 1080 1080" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" fillRule="evenodd" clipRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" {...props}>
         <g>
             <g transform="matrix(2.37095,0,0,2.37095,-437.8,-886.233)">

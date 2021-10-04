@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react'
-import CodeIcon from '../components/Images/CodeIcon'
-import DesignIcon from '../components/Images/DesignIcon'
 import GitHubIcon from '../components/Images/GitHubIcon';
 import MailIcon from '../components/Images/MailIcon';
 import TwitterIcon from '../components/Images/TwitterIcon';
