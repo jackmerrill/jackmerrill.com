@@ -1,0 +1,52 @@
+{
+  "files": {
+    "components/Navbar.tsx": [
+      {
+        "id": "5aa0d634-c476-4ab2-9957-d364b66311b2",
+        "line": 4,
+        "version": 1719,
+        "index": 217
+      },
+      {
+        "id": "01e112b0-3705-4b70-bf88-5b2716dd492d",
+        "line": 86,
+        "version": 1719,
+        "index": 3326
+      }
+    ],
+    "components/Projects.tsx": [
+      {
+        "id": "f1084f0b-cb32-4b05-b4a3-02d058b717b2",
+        "line": 15,
+        "version": 1242,
+        "index": 512
+      },
+      {
+        "id": "57d95fae-f14a-4006-9f32-bbe9021aa156",
+        "line": 90,
+        "version": 1242,
+        "index": 3381
+      },
+      {
+        "id": "d35f19ba-4d8c-488b-8a38-a26540595f2d",
+        "line": 91,
+        "version": 1242,
+        "index": 3396
+      }
+    ],
+    "pages/index.tsx": [
+      {
+        "id": "d3363946-0aa7-43f5-b2ee-bc23387ea7a5",
+        "line": 14,
+        "version": 1196,
+        "index": 609
+      },
+      {
+        "id": "91f8cc38-eb3c-426c-ba37-749bb88281ac",
+        "line": 90,
+        "version": 1196,
+        "index": 3779
+      }
+    ]
+  }
+}

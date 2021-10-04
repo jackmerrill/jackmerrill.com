@@ -3,7 +3,7 @@ import NextJSIcon from "./Images/NextJSIcon";
 import TailwindIcon from "./Images/TailwindIcon";
 
 const Footer = () => (
-    <footer className='flex flex-wrap justify-center text-center w-full bg-gray-900 p-8'>
+    <footer className='flex flex-wrap justify-center border-t-2 border-white text-center w-full bg-black p-8'>
         <p className='flex w-full items-center justify-center text-white font-bold text-lg space-x-1'>
             Made with
             <HeartIcon className='text-red-500 md:h-6 md:w-6 h-12 w-12 ml-1' />
