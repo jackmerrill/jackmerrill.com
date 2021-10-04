@@ -32,7 +32,7 @@ export default function Skills() {
   }
 
   return (
-    <div className="bg-gray-900" id="about" >
+    <div className="bg-black" id="about" >
       {/* Header */}
       <div className="relative pb-32">
         <div className="absolute inset-0">

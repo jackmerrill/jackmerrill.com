@@ -20,6 +20,16 @@ function classNames(...classes: any[]) {
 const Navbar = ({ views }: { views: { view: string, viewing: boolean }[] }) => {
     const [atTop, setAtTop] = useState<boolean>()
 
+    function updateCurrent() {
+      const currentlyViewing = views.find((view) => view.viewing === true)
+      navigation.forEach((nav) => nav.current = false)
+      if (currentlyViewing) {
+        const nav = navigation.find((nav) => nav.name === currentlyViewing.view)
+        if (!nav) return
+        nav.current = true
+      }
+    }
+
     useEffect(() => {
         if (window.scrollY === 0) {
             setAtTop(true)
@@ -33,16 +43,12 @@ const Navbar = ({ views }: { views: { view: string, viewing: boolean }[] }) => {
                 setAtTop(false)
             }
 
-            const currentlyViewing = views.find((view) => view.viewing === true)
-            navigation.forEach((nav) => nav.current = false)
-            if (currentlyViewing) {
-              navigation.find((nav) => nav.name === currentlyViewing.view).current = true
-            }
+            updateCurrent()
         })
     })
 
   return (
-    <Disclosure as="nav" className={`fixed w-full z-50 bg-gray-800 ${atTop ? '' : 'shadow-lg'}`}>
+    <Disclosure as="nav" className={`fixed w-full z-50 bg-black border-b-2 border-white ${atTop ? '' : 'shadow-lg'}`}>
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,13 +65,13 @@ const Navbar = ({ views }: { views: { view: string, viewing: boolean }[] }) => {
                         href={item.href}
                         id={item.name + item.href}
                         onClick={(e) => {
-                          document.getElementById(item.name + item.href).dispatchEvent(new CustomEvent('scroll'));
+                          updateCurrent()
                         }}
                         className={classNames(
                           item.current
-                            ? 'bg-gray-900 text-white'
-                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'px-3 py-2 rounded-md text-sm font-medium'
+                            ? 'border-2 border-white text-white'
+                            : 'text-gray-300 hover:border-gray-300 hover:border-2 hover:text-white',
+                          'px-3 py-2 rounded-md text-sm font-medium transition-border duration-75'
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >

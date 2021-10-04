@@ -26,13 +26,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return <>
     <div id='app'>
-      <main className="bg-gray-800 w-full h-full min-h-screen">
-        <div id='loader' className={`flex justify-center items-center align-middle fixed dark:bg-gray-800 ${loading ? 'h-screen w-screen z-50 opacity-100' : 'z-10 opacity-0'} transform transition-all duration-300`} />
+      <main className="bg-black w-full h-full min-h-screen">
         <DefaultSeo {...SEO}/>
         <Component {...pageProps} />
         <Footer />
       </main>
-      <style jsx>{`
+      <style jsx global>{`
         html, body {
           scroll-behavior: smooth;
         }

@@ -23,7 +23,7 @@ const projects = [
   {
     title: 'SCP Mobile',
     href: 'https://github.com/jackmerrill/SCP-Mobile',
-    category: { name: 'Project', color: 'bg-purple-100 text-purple-800' },
+    category: { name: 'CodeDay', color: 'bg-red-100 text-red-800' },
     description:
       'Mobile (iOS) app for the SCP Wiki. Made in 24 hours at CodeDay.',
   },

@@ -64,20 +64,20 @@ const IndexPage = () => {
       ]} />
       <header className="flex flex-wrap flex-col overflow-hidden space-y-2 lg:px-36 items-center justify-center h-screen w-full" ref={homeRef}>
         <div className="my-3 px-3 w-full text-center">
-          <h1 className="text-white font-extrabold md:text-6xl text-3xl">Good <span className="text-blue-500">{timeString}</span>! I&apos;m <span className="text-purple-500">Jack Merrill</span>.</h1>
+          <h1 className="text-white font-extrabold md:text-6xl text-3xl">Good <span>{timeString}</span>! I&apos;m <span>Jack Merrill</span>.</h1>
         </div>
         <div className="my-3 px-3 w-full text-center">
           <h2 className="text-white font-bold md:text-4xl text-2xl">A {calculateAge()} year old Graphic and UI Designer and Fullstack Developer from the Windy City.</h2>
         </div>
         <div className="inline-flex flex-wrap md:space-y-0 space-y-4 pt-4 items-center justify-center content-center md:space-x-4 my-3 px-3 w-full text-center">
           <Link href="#projects">
-            <a className="bg-gradient-to-r from-green-400 to-blue-500 px-4 py-2 rounded-xl font-bold text-white md:w-1/6 w-full">
+            <a className="border-white border hover:bg-white hover:text-black transition duration-150 px-4 py-2 rounded-xl font-bold text-white md:w-1/6 w-full truncate">
               See my Work
             </a>
           </Link>
-          <span className="text-sm font-light text-gray-400 md:block hidden">or</span>
+          <span className="text-sm font-light text-white md:block hidden">or</span>
           <Link href="mailto:me@jackmerrill.com">
-            <a className="bg-gradient-to-r from-green-400 to-blue-500 px-4 py-2 rounded-xl font-bold text-white md:w-1/6 w-full">
+            <a className="border-white border hover:bg-white hover:text-black transition duration-150 px-4 py-2 rounded-xl font-bold text-white md:w-1/6 w-full">
               Contact Me
             </a>
           </Link>
@@ -86,7 +86,7 @@ const IndexPage = () => {
       <div ref={aboutRef} id="about">
         <Skills />
       </div>
-      <div id='projects' ref={projectsRef} id="projects">
+      <div id='projects' ref={projectsRef}>
         <Projects />
       </div>
       

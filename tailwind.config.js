@@ -16,12 +16,15 @@ module.exports = {
         'twitter': '#1DA1F2',
       },
       transitionProperty: {
-        'fadeDown': 'height opacity'
+        'fadeDown': 'height opacity',
+        'border': 'border-width border-color'
       }
     },
   },
   variants: {
-
+    extend: {
+      borderWidth: ['hover']
+    }
   },
   plugins: [
     require('tailwindcss-filters'),
