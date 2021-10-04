@@ -26,13 +26,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return <>
     <div id='app'>
-      <main className="bg-black w-full h-full min-h-screen">
+      <main className="w-full h-full min-h-screen bg-black">
         <DefaultSeo {...SEO}/>
         <Component {...pageProps} />
         <Footer />
       </main>
       <style jsx global>{`
-        html, body {
+        html {
           scroll-behavior: smooth;
         }
       `}</style>
