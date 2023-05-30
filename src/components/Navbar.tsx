@@ -12,16 +12,28 @@ import {
   ContextMenuTrigger,
 } from "./ui/context-menu";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { cn } from "@/lib/utils";
+import { BackpackIcon, Pencil2Icon } from "@radix-ui/react-icons";
 
 export default function Navbar({
   projects,
   blogPosts,
 }: {
-  projects: any;
-  blogPosts: any;
+  projects: {
+    publishedAt: Date;
+    title: string;
+    subtitle: string;
+    slug: string;
+  }[];
+  blogPosts: {
+    publishedAt: Date;
+    title: string;
+    slug: string;
+    categories: string[];
+  }[];
 }) {
   return (
-    <div className="flex items-center justify-between w-full p-6 mx-auto max-w-7xl">
+    <div className="flex items-center w-full p-6 mx-auto max-w-7xl">
       <ContextMenu>
         <ContextMenuTrigger>
           <div className="p-4 bg-gray-800 rounded-md w-14 h-14 animate-rainbow-outline">
@@ -35,42 +47,61 @@ export default function Navbar({
         </ContextMenuContent>
       </ContextMenu>
 
-      <div className="flex items-center min-h-full font-bold transition-all duration-150 rounded-full text-slate-900 dark:text-white bg-slate-300 dark:bg-gray-800 hover:px-2">
-        <NavigationMenu.Root className="relative z-[1] flex w-full h-full justify-center">
-          <NavigationMenu.List className="flex m-0 list-none center">
+      <div className="flex items-center flex-grow min-h-full px-4">
+        <NavigationMenu.Root className="relative z-[1] mx-auto w-full flex h-full justify-center font-bold ">
+          <NavigationMenu.List className="flex m-0 list-none transition-all duration-150 rounded-full center text-slate-900 dark:text-white bg-slate-300 dark:bg-gray-800 hover:px-2">
             <NavigationMenu.Item>
-              <NavigationMenu.Trigger className="hover:bg-gray-700 group flex select-none items-center justify-between gap-[2px] rounded-full h-full px-3 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
-                Projects
+              <NavigationMenu.Trigger asChild>
+                <Link
+                  href="/projects"
+                  className="hover:bg-gray-700 group flex select-none items-center justify-between gap-[2px] rounded-full h-full px-3 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]"
+                >
+                  Projects
+                </Link>
               </NavigationMenu.Trigger>
               <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full sm:w-auto">
-                <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-[0.75fr_1fr]">
-                  <li className="grid row-span-3">
+                <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-5">
+                  <li className="grid col-span-2 row-span-3">
                     <NavigationMenu.Link asChild>
-                      <a
-                        className="focus:shadow-violet7 from-purple9 to-indigo9 flex
-                    h-full w-full select-none flex-col justify-end rounded-full bg-gradient-to-b p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px]"
-                        href="/"
+                      <Link
+                        className="focus:shadow-purple-500 from-purple-500 to-indigo-500 flex
+                    h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px]"
+                        href="/projects"
                       >
-                        <svg
-                          aria-hidden
-                          width="38"
-                          height="38"
-                          viewBox="0 0 25 25"
-                          fill="white"
-                        >
-                          <path d="M12 25C7.58173 25 4 21.4183 4 17C4 12.5817 7.58173 9 12 9V25Z"></path>
-                          <path d="M12 0H4V8H12V0Z"></path>
-                          <path d="M17 8C19.2091 8 21 6.20914 21 4C21 1.79086 19.2091 0 17 0C14.7909 0 13 1.79086 13 4C13 6.20914 14.7909 8 17 8Z"></path>
-                        </svg>
-                        <div className="mt-4 mb-[7px] text-[18px] font-medium leading-[1.2] text-white">
-                          Radix Primitives
+                        <BackpackIcon className="w-12 h-12 mb-2 text-white" />
+                        <div className="pb-4 text-[18px] font-bold leading-[1.2] text-white">
+                          Projects
                         </div>
-                        <p className="text-mauve4 text-[14px] leading-[1.3]">
-                          Unstyled, accessible components for React.
+                        <p className="text-[14px] font-medium leading-[1.3]">
+                          See the weird and wonderful things I&apos;ve been
+                          working on.
                         </p>
-                      </a>
+                      </Link>
                     </NavigationMenu.Link>
                   </li>
+
+                  {projects.map((project) => (
+                    <li
+                      key={project.slug}
+                      className="col-span-3 transition duration-150 rounded-md hover:bg-gray-900"
+                    >
+                      <NavigationMenu.Link asChild>
+                        <Link
+                          href={`/projects/${project.slug}`}
+                          className={
+                            "focus:shadow-[0_0_0_2px] focus:shadow-violet7 hover:bg-mauve3 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors"
+                          }
+                        >
+                          <div className="mb-[5px] font-bold leading-[1.2]">
+                            {project.title}
+                          </div>
+                          <p className="font-medium leading-[1.4]">
+                            {project.subtitle}
+                          </p>
+                        </Link>
+                      </NavigationMenu.Link>
+                    </li>
+                  ))}
                 </ul>
               </NavigationMenu.Content>
             </NavigationMenu.Item>
@@ -79,8 +110,49 @@ export default function Navbar({
               <NavigationMenu.Trigger className="hover:bg-gray-700 h-full group flex select-none items-center justify-between gap-[2px] rounded-full px-3 py-2 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
                 Blog
               </NavigationMenu.Trigger>
-              <NavigationMenu.Content className="absolute top-0 left-0 w-full sm:w-auto">
-                <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[600px] sm:grid-flow-col sm:grid-rows-3"></ul>
+              <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full sm:w-auto">
+                <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-5">
+                  <li className="grid col-span-2 row-span-3">
+                    <NavigationMenu.Link asChild>
+                      <Link
+                        className="focus:shadow-green-500 from-green-500 to-cyan-500 flex
+                    h-full w-full select-none flex-col justify-end rounded-lg bg-gradient-to-b p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px]"
+                        href="/blog"
+                      >
+                        <Pencil2Icon className="w-12 h-12 mb-2 text-white" />
+                        <div className="pb-4 text-[18px] font-bold leading-[1.2] text-white">
+                          Blog
+                        </div>
+                        <p className="text-[14px] font-medium leading-[1.3]">
+                          Read my thoughts on the web, tech, and life.
+                        </p>
+                      </Link>
+                    </NavigationMenu.Link>
+                  </li>
+
+                  {blogPosts.map((post) => (
+                    <li
+                      key={post.slug}
+                      className="col-span-3 transition duration-150 rounded-md hover:bg-gray-900"
+                    >
+                      <NavigationMenu.Link asChild>
+                        <Link
+                          href={`/blog/${post.slug}`}
+                          className={
+                            "focus:shadow-[0_0_0_2px] focus:shadow-violet7 hover:bg-mauve3 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors"
+                          }
+                        >
+                          <div className="mb-[5px] font-bold leading-[1.2]">
+                            {post.title}
+                          </div>
+                          <p className="font-medium leading-[1.4]">
+                            Categories: {post.categories.join(", ")}
+                          </p>
+                        </Link>
+                      </NavigationMenu.Link>
+                    </li>
+                  ))}
+                </ul>
               </NavigationMenu.Content>
             </NavigationMenu.Item>
 
@@ -98,7 +170,7 @@ export default function Navbar({
             </NavigationMenu.Item>
 
             <NavigationMenu.Indicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]">
-              <div className="relative top-[70%] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-white" />
+              <div className="relative top-[70%] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-white dark:bg-gray-800" />
             </NavigationMenu.Indicator>
           </NavigationMenu.List>
 
