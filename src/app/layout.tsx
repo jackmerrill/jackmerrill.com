@@ -82,7 +82,10 @@ export default async function RootLayout({
             </p>
 
             <p className="text-xs font-light text-zinc-700">
-              Build {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA || "dev"}
+              Build{" "}
+              {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA
+                ? process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA.slice(0, 7)
+                : "dev"}
             </p>
 
             <div className="flex space-x-4">
