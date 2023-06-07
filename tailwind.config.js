@@ -131,6 +131,7 @@ module.exports = {
   plugins: [
     require("tailwindcss-hero-patterns"),
     require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
     plugin(({ matchUtilities }) => {
       matchUtilities({
         perspective: (value) => ({

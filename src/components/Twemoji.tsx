@@ -30,7 +30,7 @@ function Twemoji({
       width={width}
       height={height}
       alt={emoji}
-      loading="lazy"
+      loading="eager"
       draggable={false}
       className={className}
     />

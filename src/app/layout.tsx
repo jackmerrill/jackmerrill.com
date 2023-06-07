@@ -23,8 +23,10 @@ export const metadata = {
 
 export default async function RootLayout({
   children,
+  project,
 }: {
   children: React.ReactNode;
+  project?: React.ReactNode;
 }) {
   const { query: projectQuery, schema: projectSchema } = q("*")
     .filterByType("project")
@@ -106,6 +108,8 @@ export default async function RootLayout({
             </div>
           </div>
         </footer>
+
+        {project}
       </body>
     </html>
   );
