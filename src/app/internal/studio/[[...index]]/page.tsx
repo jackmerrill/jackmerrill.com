@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 /**
  * This route is responsible for the built-in authoring environment using Sanity Studio.
@@ -9,9 +9,11 @@
  * https://github.com/sanity-io/next-sanity
  */
 
-import { NextStudio } from 'next-sanity/studio'
-import config from '../../../../../sanity.config'
+import { NextStudio } from "next-sanity/studio";
+import config from "../../../../../sanity.config";
+
+const isDev = process.env.NODE_ENV === "development" || !process.env.NODE_ENV;
 
 export default function StudioPage() {
-  return <NextStudio config={config} />
+  return isDev ? <NextStudio config={config} /> : null;
 }

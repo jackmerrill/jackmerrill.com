@@ -1,3 +1,5 @@
+"use client";
+
 import { CopyIcon } from "@radix-ui/react-icons";
 import { CopyCheckIcon } from "lucide-react";
 import React, { useState } from "react";

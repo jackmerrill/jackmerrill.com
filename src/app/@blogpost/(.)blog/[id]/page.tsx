@@ -14,7 +14,7 @@ import CodeBlock from "@/components/Codeblock";
 import Image from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
 
-type Project = {
+type BlogPost = {
   title: string;
   subtitle: string;
   slug: string;
@@ -22,7 +22,7 @@ type Project = {
   content: string;
 };
 
-export default function ProjectModal({
+export default function BlogPostModal({
   params: { id: slug },
 }: {
   params: {
@@ -30,7 +30,7 @@ export default function ProjectModal({
   };
 }) {
   const router = useRouter();
-  const [project, setProject] = React.useState<Project | null>(null);
+  const [post, setPost] = React.useState<BlogPost | null>(null);
   const handleOpenChange = (open: boolean) => {
     if (!open) {
       router.back();
@@ -38,9 +38,9 @@ export default function ProjectModal({
   };
 
   React.useEffect(() => {
-    async function getProject() {
-      const { query: projectQuery, schema: projectSchema } = q("*")
-        .filterByType("project")
+    async function getPost() {
+      const { query, schema } = q("*")
+        .filterByType("post")
         .filter(`slug.current == "${slug}"`)
         .grab$({
           title: q.string(),
@@ -51,11 +51,11 @@ export default function ProjectModal({
         })
         .slice(0, 1);
 
-      const project = projectSchema.parse(await client.fetch(projectQuery));
+      const post = schema.parse(await client.fetch(query));
 
-      setProject(project[0]);
+      setPost(post[0]);
     }
-    getProject();
+    getPost();
   }, [slug]);
 
   return (
@@ -66,18 +66,18 @@ export default function ProjectModal({
           <Dialog.Title
             className={cn(
               "dark:text-white text-indigo-600 m-0 text-6xl font-bold",
-              !project && "bg-gray-500 animate-pulse block w-52 h-5"
+              !post && "bg-gray-500 animate-pulse block w-52 h-5"
             )}
           >
-            {project?.title}
+            {post?.title}
           </Dialog.Title>
           <Dialog.Description
             className={cn(
               "dark:text-white text-indigo-500 font-semibold mt-[10px] mb-5 text-2xl leading-normal",
-              !project && "bg-gray-500 animate-pulse block w-72 h-5"
+              !post && "bg-gray-500 animate-pulse block w-72 h-5"
             )}
           >
-            {project?.subtitle}
+            {post?.subtitle}
           </Dialog.Description>
 
           <article className="prose dark:prose-invert prose-zinc max-w-none lg:prose-xl">
@@ -103,7 +103,7 @@ export default function ProjectModal({
                 } as any
               }
             >
-              {project?.content || ""}
+              {post?.content || ""}
             </ReactMarkdown>
           </article>
 

@@ -24,6 +24,7 @@ export default function Navbar({
     title: string;
     subtitle: string;
     slug: string;
+    mainImage: string;
   }[];
   blogPosts: {
     publishedAt: Date;
@@ -51,13 +52,8 @@ export default function Navbar({
         <NavigationMenu.Root className="relative z-[1] mx-auto w-full flex h-full justify-center font-bold ">
           <NavigationMenu.List className="flex m-0 list-none transition-all duration-150 rounded-full center text-slate-900 dark:text-white bg-slate-300 dark:bg-gray-800 hover:px-2">
             <NavigationMenu.Item>
-              <NavigationMenu.Trigger asChild>
-                <Link
-                  href="/projects"
-                  className="hover:bg-gray-700 group flex select-none items-center justify-between gap-[2px] rounded-full h-full px-3 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]"
-                >
-                  Projects
-                </Link>
+              <NavigationMenu.Trigger className="hover:bg-gray-700 group flex select-none items-center justify-between gap-[2px] rounded-full h-full px-3 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
+                Projects
               </NavigationMenu.Trigger>
               <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full sm:w-auto">
                 <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-5">
@@ -89,15 +85,30 @@ export default function Navbar({
                         <Link
                           href={`/projects/${project.slug}`}
                           className={
-                            "focus:shadow-[0_0_0_2px] focus:shadow-violet7 hover:bg-mauve3 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors"
+                            "focus:shadow-[0_0_0_2px] grid grid-cols-4 items-center focus:shadow-violet7 hover:bg-mauve3 select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors"
                           }
                         >
-                          <div className="mb-[5px] font-bold leading-[1.2]">
-                            {project.title}
+                          <div className="col-span-3">
+                            <div className="mb-[5px] font-bold leading-[1.2]">
+                              {project.title}
+                            </div>
+                            <p className="font-medium leading-[1.4]">
+                              {project.subtitle}
+                            </p>
                           </div>
-                          <p className="font-medium leading-[1.4]">
-                            {project.subtitle}
-                          </p>
+
+                          {/* project image */}
+                          {project.mainImage && (
+                            <div className="relative w-full h-full overflow-hidden rounded-md">
+                              <Image
+                                src={project.mainImage}
+                                alt=""
+                                fill
+                                style={{ objectFit: "cover" }}
+                                className="h-full rounded-md"
+                              />
+                            </div>
+                          )}
                         </Link>
                       </NavigationMenu.Link>
                     </li>
@@ -159,9 +170,9 @@ export default function Navbar({
             <NavigationMenu.Item>
               <NavigationMenu.Link
                 className="hover:bg-gray-700 h-full items-center flex select-none rounded-full px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
-                href="https://github.com/radix-ui"
+                asChild
               >
-                About
+                <Link href="/about">About</Link>
               </NavigationMenu.Link>
             </NavigationMenu.Item>
 

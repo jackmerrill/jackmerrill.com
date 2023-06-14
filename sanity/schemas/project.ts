@@ -60,6 +60,9 @@ export default defineType({
       name: "content",
       title: "Body",
       type: "markdown",
+      options: {
+        imageUrl: (imageAsset) => `${imageAsset.url}`,
+      },
     }),
   ],
 

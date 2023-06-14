@@ -24,9 +24,11 @@ export const metadata = {
 export default async function RootLayout({
   children,
   project,
+  blogpost,
 }: {
   children: React.ReactNode;
   project?: React.ReactNode;
+  blogpost?: React.ReactNode;
 }) {
   const { query: projectQuery, schema: projectSchema } = q("*")
     .filterByType("project")
@@ -37,6 +39,7 @@ export default async function RootLayout({
       subtitle: q.string(),
       slug: q.slug("slug"),
       publishedAt: q.date(),
+      mainImage: q("mainImage").grabOne$("asset->url", q.string()),
     });
 
   const { query: blogQuery, schema: blogSchema } = q("*")
@@ -110,6 +113,7 @@ export default async function RootLayout({
         </footer>
 
         {project}
+        {blogpost}
       </body>
     </html>
   );

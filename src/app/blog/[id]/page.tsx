@@ -11,8 +11,8 @@ export default async function Page({
 }: {
   params: { id: string };
 }) {
-  const { query: projectQuery, schema: projectSchema } = q("*")
-    .filterByType("project")
+  const { query, schema } = q("*")
+    .filterByType("post")
     .filter(`slug.current == "${slug}"`)
     .grab$({
       title: q.string(),
@@ -24,9 +24,9 @@ export default async function Page({
     })
     .slice(0, 1);
 
-  const project = projectSchema.parse(await client.fetch(projectQuery))[0];
+  const post = schema.parse(await client.fetch(query))[0];
 
-  const r = project.mainImage.match(/(?<width>\d+)x(?<height>\d+)/);
+  const r = post.mainImage.match(/(?<width>\d+)x(?<height>\d+)/);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -36,18 +36,18 @@ export default async function Page({
           <div className="absolute inset-0 flex items-center justify-center w-full h-full bg-black bg-opacity-50">
             <div className="flex flex-col items-center justify-center space-y-4">
               <h1 className="text-4xl font-bold text-center text-white">
-                {project.title}
+                {post.title}
               </h1>
 
               <h2 className="text-2xl font-semibold text-center text-white">
-                {project.subtitle}
+                {post.subtitle}
               </h2>
             </div>
           </div>
           <Image
             className="object-cover w-full h-full"
-            src={project.mainImage}
-            alt={project.title}
+            src={post.mainImage}
+            alt={post.title}
             width={parseInt(r?.groups?.width ?? "400")}
             height={parseInt(r?.groups?.height ?? "400")}
           />
@@ -78,7 +78,7 @@ export default async function Page({
             } as any
           }
         >
-          {project?.content || ""}
+          {post?.content || ""}
         </ReactMarkdown>
       </article>
     </div>
