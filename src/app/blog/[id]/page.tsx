@@ -20,13 +20,13 @@ export default async function Page({
       slug: q.slug("slug"),
       publishedAt: q.date(),
       content: q.string(),
-      mainImage: q("mainImage").grabOne$("asset->url", q.string()),
+      mainImage: q("mainImage").grabOne$("asset->url", q.string().optional()),
     })
     .slice(0, 1);
 
   const post = schema.parse(await client.fetch(query))[0];
 
-  const r = post.mainImage.match(/(?<width>\d+)x(?<height>\d+)/);
+  const r = post.mainImage?.match(/(?<width>\d+)x(?<height>\d+)/);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -44,13 +44,15 @@ export default async function Page({
               </h2>
             </div>
           </div>
-          <Image
-            className="object-cover w-full h-full"
-            src={post.mainImage}
-            alt={post.title}
-            width={parseInt(r?.groups?.width ?? "400")}
-            height={parseInt(r?.groups?.height ?? "400")}
-          />
+          {post.mainImage && (
+            <Image
+              className="object-cover w-full h-full"
+              src={post.mainImage}
+              alt={post.title}
+              width={parseInt(r?.groups?.width ?? "400")}
+              height={parseInt(r?.groups?.height ?? "400")}
+            />
+          )}
         </div>
       </div>
 

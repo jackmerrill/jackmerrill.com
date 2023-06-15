@@ -13,11 +13,12 @@ export default async function Page() {
       subtitle: q.string(),
       slug: q.slug("slug"),
       publishedAt: q.date(),
-      mainImage: q("mainImage").grabOne$("asset->url", q.string()),
+      mainImage: q("mainImage").grabOne$("asset->url", q.string().optional()),
       categories: q("categories")
         .filter()
         .deref()
-        .grabOne$("title", q.string()),
+        .grabOne$("title", q.string())
+        .nullable(),
     });
 
   const posts = schema.parse(await client.fetch(query));
@@ -38,7 +39,7 @@ export default async function Page() {
       <div className="dark:bg-zinc-900">
         <section className="grid grid-cols-2 gap-4 py-8 mx-auto max-w-7xl">
           {posts.map((post) => {
-            const r = post.mainImage.match(/(?<width>\d+)x(?<height>\d+)/);
+            const r = post.mainImage?.match(/(?<width>\d+)x(?<height>\d+)/);
 
             return (
               <Link
@@ -46,26 +47,30 @@ export default async function Page() {
                 className="flex flex-col items-center justify-center pb-4 space-y-4 overflow-hidden transition-all duration-150 rounded-md dark:bg-zinc-800 hover:scale-105"
                 href={`/blog/${post.slug}`}
               >
-                <Image
-                  src={post.mainImage}
-                  alt={post.title}
-                  width={parseInt(r?.groups?.width ?? "400")}
-                  height={parseInt(r?.groups?.height ?? "400")}
-                />
+                {post.mainImage && (
+                  <Image
+                    src={post.mainImage}
+                    alt={post.title}
+                    width={parseInt(r?.groups?.width ?? "400")}
+                    height={parseInt(r?.groups?.height ?? "400")}
+                  />
+                )}
                 <h3 className="text-xl font-semibold">{post.title}</h3>
                 <p className="text-lg">{post.subtitle}</p>
 
-                <p className="text-md text-zinc-400">
-                  Categories:
-                  {post.categories.map((category) => (
-                    <span
-                      key={category}
-                      className="px-2 py-1 ml-2 text-sm font-semibold text-white bg-indigo-500 rounded-md"
-                    >
-                      {category}
-                    </span>
-                  ))}
-                </p>
+                {post.categories && post.categories.length > 0 && (
+                  <p className="text-md text-zinc-400">
+                    Categories:
+                    {post.categories.map((category) => (
+                      <span
+                        key={category}
+                        className="px-2 py-1 ml-2 text-sm font-semibold text-white bg-indigo-500 rounded-md"
+                      >
+                        {category}
+                      </span>
+                    ))}
+                  </p>
+                )}
 
                 <div className="flex items-center space-x-2">
                   <time

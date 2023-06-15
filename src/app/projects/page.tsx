@@ -17,7 +17,8 @@ export default async function Page() {
       categories: q("categories")
         .filter()
         .deref()
-        .grabOne$("title", q.string()),
+        .grabOne$("title", q.string())
+        .nullable(),
     });
 
   const projects = projectSchema.parse(await client.fetch(projectQuery));
@@ -59,19 +60,21 @@ export default async function Page() {
                   <p className="text-lg">{project.subtitle}</p>
                 </div>
 
-                <p className="flex-grow">
-                  <div className="flex flex-wrap flex-grow gap-1 text-md dark:text-zinc-400 text-slate-600">
-                    <span className="w-full">Categories:</span>
-                    {project.categories.map((category) => (
-                      <span
-                        key={category}
-                        className="px-2 py-1 text-sm font-semibold text-white bg-indigo-500 rounded-md"
-                      >
-                        {category}
-                      </span>
-                    ))}
-                  </div>
-                </p>
+                <div className="flex-grow">
+                  {project.categories && project.categories.length > 0 && (
+                    <div className="flex flex-wrap flex-grow gap-1 text-md dark:text-zinc-400 text-slate-600">
+                      <span className="w-full">Categories:</span>
+                      {project.categories.map((category) => (
+                        <span
+                          key={category}
+                          className="px-2 py-1 text-sm font-semibold text-white bg-indigo-500 rounded-md"
+                        >
+                          {category}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
 
                 <div className="flex items-center mt-auto space-x-2">
                   <time
