@@ -12,6 +12,7 @@ import {
   TwitterLogoIcon,
 } from "@radix-ui/react-icons";
 import Twemoji from "@/components/Twemoji";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -115,6 +116,8 @@ export default async function RootLayout({
 
         {project}
         {blogpost}
+
+        <Analytics />
       </body>
     </html>
   );
