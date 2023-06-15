@@ -55,7 +55,7 @@ export default async function Page({
       </div>
 
       {/* the content */}
-      <article className="prose dark:prose-invert prose-zinc max-w-none lg:prose-xl">
+      <article className="mx-auto prose dark:prose-invert prose-zinc max-w-7xl lg:prose-xl">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw]}
@@ -83,4 +83,14 @@ export default async function Page({
       </article>
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  const { query, schema } = q("*")
+    .filterByType("post")
+    .grabOne$("slug.current", q.string());
+
+  const slugs = schema.parse(await client.fetch(query));
+
+  return slugs.map((slug) => ({ params: { id: slug } }));
 }

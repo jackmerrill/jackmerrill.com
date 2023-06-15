@@ -13,7 +13,7 @@ export default async function Page() {
       subtitle: q.string(),
       slug: q.slug("slug"),
       publishedAt: q.date(),
-      mainImage: q("mainImage").grabOne$("asset->url", q.string()),
+      mainImage: q("mainImage").grabOne$("asset->url", q.string().optional()),
       categories: q("categories")
         .filter()
         .deref()
@@ -24,7 +24,7 @@ export default async function Page() {
 
   return (
     <div>
-      <section className="flex items-center px-6 py-48 mx-auto h-2/3 max-w-7xl">
+      <section className="flex items-center px-6 py-48 mx-auto text-black dark:text-white h-2/3 max-w-7xl">
         <div className="space-y-4">
           <h1 className="flex items-center text-6xl font-bold gap-x-4">
             <Twemoji emoji="🛠" ext="svg" /> Projects
@@ -35,39 +35,45 @@ export default async function Page() {
         </div>
       </section>
 
-      <div className="dark:bg-zinc-900">
-        <section className="grid grid-cols-4 gap-4 py-8 mx-auto max-w-7xl">
+      <div className="dark:bg-zinc-900 bg-slate-200">
+        <section className="grid gap-4 px-4 py-8 mx-auto md:grid-cols-4 max-w-7xl">
           {projects.map((project) => {
-            const r = project.mainImage.match(/(?<width>\d+)x(?<height>\d+)/);
+            const r = project.mainImage?.match(/(?<width>\d+)x(?<height>\d+)/);
 
             return (
               <Link
                 key={project.slug}
-                className="flex flex-col items-center justify-center p-6 space-y-4 transition-all duration-150 rounded-md dark:bg-zinc-800 hover:scale-105"
+                className="flex flex-col items-center justify-center h-full p-6 space-y-4 text-black transition-all duration-150 rounded-md dark:text-white dark:bg-zinc-800 bg-slate-300 hover:scale-105"
                 href={`/projects/${project.slug}`}
               >
-                <Image
-                  src={project.mainImage}
-                  alt={project.title}
-                  width={parseInt(r?.groups?.width ?? "400")}
-                  height={parseInt(r?.groups?.height ?? "400")}
-                />
-                <h3 className="text-xl font-semibold">{project.title}</h3>
-                <p className="text-lg">{project.subtitle}</p>
+                <div>
+                  {project.mainImage && (
+                    <Image
+                      src={project.mainImage}
+                      alt={project.title}
+                      width={parseInt(r?.groups?.width ?? "400")}
+                      height={parseInt(r?.groups?.height ?? "400")}
+                    />
+                  )}
+                  <h3 className="text-xl font-semibold">{project.title}</h3>
+                  <p className="text-lg">{project.subtitle}</p>
+                </div>
 
-                <p className="text-md text-zinc-400">
-                  Categories:
-                  {project.categories.map((category) => (
-                    <span
-                      key={category}
-                      className="px-2 py-1 ml-2 text-sm font-semibold text-white bg-indigo-500 rounded-md"
-                    >
-                      {category}
-                    </span>
-                  ))}
+                <p className="flex-grow">
+                  <div className="flex flex-wrap flex-grow gap-1 text-md dark:text-zinc-400 text-slate-600">
+                    <span className="w-full">Categories:</span>
+                    {project.categories.map((category) => (
+                      <span
+                        key={category}
+                        className="px-2 py-1 text-sm font-semibold text-white bg-indigo-500 rounded-md"
+                      >
+                        {category}
+                      </span>
+                    ))}
+                  </div>
                 </p>
 
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center mt-auto space-x-2">
                   <time
                     className="text-sm text-gray-500"
                     dateTime={project.publishedAt.toISOString()}

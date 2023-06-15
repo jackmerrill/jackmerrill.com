@@ -32,15 +32,15 @@ export default async function RootLayout({
 }) {
   const { query: projectQuery, schema: projectSchema } = q("*")
     .filterByType("project")
-    .slice(0, 3)
     .order("publishedAt desc")
     .grab$({
       title: q.string(),
       subtitle: q.string(),
       slug: q.slug("slug"),
       publishedAt: q.date(),
-      mainImage: q("mainImage").grabOne$("asset->url", q.string()),
-    });
+      mainImage: q("mainImage").grabOne$("asset->url", q.string().optional()),
+    })
+    .slice(0, 2);
 
   const { query: blogQuery, schema: blogSchema } = q("*")
     .filterByType("post")
@@ -53,7 +53,8 @@ export default async function RootLayout({
       categories: q("categories")
         .filter()
         .deref()
-        .grabOne$("title", q.string()),
+        .grabOne$("title", q.string())
+        .nullable(),
     });
 
   const latestThreeProjects = projectSchema.parse(
@@ -74,13 +75,13 @@ export default async function RootLayout({
 
         <main className="w-full min-h-full space-y-6">{children}</main>
 
-        <footer className="flex justify-center w-full py-8 bg-zinc-900">
-          <div className="flex items-center justify-between w-full max-w-7xl">
-            <p className="flex items-center space-x-1 text-lg text-center text-zinc-100">
+        <footer className="flex justify-center w-full py-8 dark:bg-zinc-900 bg-zinc-300">
+          <div className="flex flex-col items-center w-full px-4 space-y-2 md:flex-row md:justify-between max-w-7xl">
+            <p className="flex items-center space-x-1 text-lg text-center text-black dark:text-zinc-100">
               Made with
               <Twemoji
                 emoji="❤️"
-                className="w-5 h-5 mx-1 text-red-500 transition-all duration-150 hover:scale-110"
+                className="w-5 h-5 mx-1 text-red-500 hover:animate-heartbeat"
                 ext="svg"
               />
               by Jack Merrill
@@ -93,20 +94,20 @@ export default async function RootLayout({
                 : "dev"}
             </p>
 
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 text-black dark:text-zinc-100">
               <Link
                 href="https://www.linkedin.com/in/jack-merrill-39aa7520b/"
                 target="_blank"
               >
-                <LinkedInLogoIcon className="w-6 h-6 transition-colors duration-150 cursor-pointer text-zinc-100 hover:text-[#0a66c2]" />
+                <LinkedInLogoIcon className="w-6 h-6 transition-colors duration-150 cursor-pointer  hover:text-[#0a66c2]" />
               </Link>
 
               <Link href="https://github.com/jackmerrill" target="_blank">
-                <GitHubLogoIcon className="w-6 h-6 transition-colors duration-150 cursor-pointer text-zinc-100 hover:text-pink-500" />
+                <GitHubLogoIcon className="w-6 h-6 transition-colors duration-150 cursor-pointer hover:text-pink-500" />
               </Link>
 
               <Link href="https://twitter.com/jack__merrill" target="_blank">
-                <TwitterLogoIcon className="w-6 h-6 transition-colors duration-150 cursor-pointer text-zinc-100 hover:text-[#1d9bf0]" />
+                <TwitterLogoIcon className="w-6 h-6 transition-colors duration-150 cursor-pointer hover:text-[#1d9bf0]" />
               </Link>
             </div>
           </div>

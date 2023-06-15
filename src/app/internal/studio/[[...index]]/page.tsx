@@ -12,7 +12,11 @@
 import { NextStudio } from "next-sanity/studio";
 import config from "../../../../../sanity.config";
 
-const isDev = process.env.NODE_ENV === "development" || !process.env.NODE_ENV;
+const isDev =
+  process.env.NODE_ENV === "development" ||
+  !process.env.NODE_ENV ||
+  process.env.NEXT_PUBLIC_ENV === "development" ||
+  !process.env.NEXT_PUBLIC_ENV;
 
 export default function StudioPage() {
   return isDev ? <NextStudio config={config} /> : null;

@@ -7,26 +7,25 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 
 export default async function Page({
-  params: { id: slug },
+  params: { id },
 }: {
   params: { id: string };
 }) {
   const { query: projectQuery, schema: projectSchema } = q("*")
     .filterByType("project")
-    .filter(`slug.current == "${slug}"`)
+    .filter(`slug.current == "${id}"`)
     .grab$({
       title: q.string(),
       subtitle: q.string(),
       slug: q.slug("slug"),
       publishedAt: q.date(),
       content: q.string(),
-      mainImage: q("mainImage").grabOne$("asset->url", q.string()),
-    })
-    .slice(0, 1);
+      mainImage: q("mainImage").grabOne$("asset->url", q.string().optional()),
+    });
 
   const project = projectSchema.parse(await client.fetch(projectQuery))[0];
 
-  const r = project.mainImage.match(/(?<width>\d+)x(?<height>\d+)/);
+  const r = project.mainImage?.match(/(?<width>\d+)x(?<height>\d+)/);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -44,18 +43,20 @@ export default async function Page({
               </h2>
             </div>
           </div>
-          <Image
-            className="object-cover w-full h-full"
-            src={project.mainImage}
-            alt={project.title}
-            width={parseInt(r?.groups?.width ?? "400")}
-            height={parseInt(r?.groups?.height ?? "400")}
-          />
+          {project.mainImage && (
+            <Image
+              className="object-cover w-full h-full"
+              src={project.mainImage}
+              alt={project.title}
+              width={parseInt(r?.groups?.width ?? "400")}
+              height={parseInt(r?.groups?.height ?? "400")}
+            />
+          )}
         </div>
       </div>
 
       {/* the content */}
-      <article className="prose dark:prose-invert prose-zinc max-w-none lg:prose-xl">
+      <article className="px-4 pb-12 mx-auto prose dark:prose-invert prose-zinc max-w-7xl lg:prose-xl">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw]}
@@ -83,4 +84,18 @@ export default async function Page({
       </article>
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  const { query: projectQuery, schema: projectSchema } = q("*")
+    .filterByType("project")
+    .grabOne$("slug.current", q.string());
+
+  const projects = projectSchema.parse(await client.fetch(projectQuery));
+
+  return projects.map((project) => ({
+    params: {
+      slug: project,
+    },
+  }));
 }

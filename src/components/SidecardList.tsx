@@ -6,14 +6,17 @@ import * as Tooltip from "@radix-ui/react-tooltip";
 export default function SidecardList() {
   return (
     <Tooltip.Provider>
-      <ul className="flex flex-col gap-4 mt-4">
+      <ul className="flex flex-col justify-center gap-4 lg:mt-4">
         <Tooltip.Root>
           <Tooltip.Trigger asChild>
             <li className="flex items-center gap-2 w-min">
               <PersonIcon className="w-6 h-6" />
               <span className="ml-2 font-semibold text-md">
                 <span className="sr-only">Age</span>
-                {new Date().getFullYear() - 2004}
+                {Math.floor(
+                  (new Date().getTime() - new Date(2004, 7, 13).getTime()) /
+                    31557600000
+                )}
               </span>
             </li>
           </Tooltip.Trigger>
@@ -43,11 +46,11 @@ export default function SidecardList() {
 
         <Tooltip.Root>
           <Tooltip.Trigger asChild>
-            <li className="flex items-center w-full gap-2">
+            <li className="flex items-center gap-2 w-min min-w-fit">
               <Crosshair2Icon className="w-6 h-6" />
               <span className="ml-2 font-semibold text-md">
                 <span className="sr-only">Location</span>
-                Chicago, IL / Amherst, MA
+                Chicago, IL
               </span>
             </li>
           </Tooltip.Trigger>

@@ -13,7 +13,12 @@ import {
 } from "./ui/context-menu";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { cn } from "@/lib/utils";
-import { BackpackIcon, Pencil2Icon } from "@radix-ui/react-icons";
+import {
+  ArrowRightIcon,
+  BackpackIcon,
+  Pencil2Icon,
+} from "@radix-ui/react-icons";
+import { ContextMenuSeparator } from "@radix-ui/react-context-menu";
 
 export default function Navbar({
   projects,
@@ -24,40 +29,73 @@ export default function Navbar({
     title: string;
     subtitle: string;
     slug: string;
-    mainImage: string;
+    mainImage?: string;
   }[];
   blogPosts: {
     publishedAt: Date;
     title: string;
     slug: string;
-    categories: string[];
+    categories?: string[] | null;
   }[];
 }) {
   return (
-    <div className="flex items-center w-full p-6 mx-auto max-w-7xl">
+    <div className="flex items-center justify-between w-full p-6 mx-auto md:justify-normal max-w-7xl">
       <ContextMenu>
         <ContextMenuTrigger>
-          <div className="p-4 bg-gray-800 rounded-md w-14 h-14 animate-rainbow-outline">
-            <Logo />
-          </div>
+          <Link href="/">
+            <div className="p-4 bg-gray-800 rounded-md w-14 h-14 animate-rainbow-outline">
+              <Logo />
+            </div>
+          </Link>
         </ContextMenuTrigger>
         <ContextMenuContent>
-          <ContextMenuItem>
-            <Link href="/">Home</Link>
+          <ContextMenuItem asChild>
+            <Link href="/" className="cursor-pointer">
+              Home
+            </Link>
+          </ContextMenuItem>
+
+          <ContextMenuItem asChild>
+            <Link href="/projects" className="cursor-pointer">
+              Projects
+            </Link>
+          </ContextMenuItem>
+
+          <ContextMenuItem asChild>
+            <Link href="/blog" className="cursor-pointer">
+              Blog
+            </Link>
+          </ContextMenuItem>
+
+          <ContextMenuItem asChild>
+            <Link href="/about" className="cursor-pointer">
+              About
+            </Link>
+          </ContextMenuItem>
+
+          <ContextMenuSeparator className="h-[1px] dark:bg-gray-600 m-[5px]" />
+
+          <ContextMenuItem asChild>
+            <Link
+              href="mailto:contact@jackmerrill.com"
+              className="cursor-pointer"
+            >
+              Contact
+            </Link>
           </ContextMenuItem>
         </ContextMenuContent>
       </ContextMenu>
 
-      <div className="flex items-center flex-grow min-h-full px-4">
+      <div className="flex items-center min-h-full md:px-4 md:flex-grow">
         <NavigationMenu.Root className="relative z-[1] mx-auto w-full flex h-full justify-center font-bold ">
-          <NavigationMenu.List className="flex m-0 list-none transition-all duration-150 rounded-full center text-slate-900 dark:text-white bg-slate-300 dark:bg-gray-800 hover:px-2">
+          <NavigationMenu.List className="flex m-0 list-none transition-all duration-150 rounded-full center text-slate-900 dark:text-white bg-slate-300 dark:bg-gray-800 md:hover:px-2">
             <NavigationMenu.Item>
-              <NavigationMenu.Trigger className="hover:bg-gray-700 group flex select-none items-center justify-between gap-[2px] rounded-full h-full px-3 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
+              <NavigationMenu.Trigger className="dark:hover:bg-gray-700 hover:bg-slate-400 group flex select-none items-center justify-between gap-[2px] rounded-full h-full px-3 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
                 Projects
               </NavigationMenu.Trigger>
               <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full sm:w-auto">
-                <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-5">
-                  <li className="grid col-span-2 row-span-3">
+                <ul className="m-0 grid list-none gap-[10px] p-[22px] sm:w-[500px] sm:grid-cols-5">
+                  <li className="hidden col-span-2 row-span-3 md:grid">
                     <NavigationMenu.Link asChild>
                       <Link
                         className="focus:shadow-purple-500 from-purple-500 to-indigo-500 flex
@@ -79,13 +117,13 @@ export default function Navbar({
                   {projects.map((project) => (
                     <li
                       key={project.slug}
-                      className="col-span-3 transition duration-150 rounded-md hover:bg-gray-900"
+                      className="col-span-3 text-black transition duration-150 rounded-md dark:hover:bg-gray-900 hover:bg-slate-400 dark:text-white"
                     >
                       <NavigationMenu.Link asChild>
                         <Link
                           href={`/projects/${project.slug}`}
                           className={
-                            "focus:shadow-[0_0_0_2px] grid grid-cols-4 items-center focus:shadow-violet7 hover:bg-mauve3 select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors"
+                            "focus:shadow-[0_0_0_2px] grid md:grid-cols-4 items-center focus:shadow-violet7 hover:bg-mauve3 select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors"
                           }
                         >
                           <div className="col-span-3">
@@ -99,7 +137,7 @@ export default function Navbar({
 
                           {/* project image */}
                           {project.mainImage && (
-                            <div className="relative w-full h-full overflow-hidden rounded-md">
+                            <div className="relative hidden w-full h-full overflow-hidden rounded-md md:block">
                               <Image
                                 src={project.mainImage}
                                 alt=""
@@ -113,17 +151,34 @@ export default function Navbar({
                       </NavigationMenu.Link>
                     </li>
                   ))}
+
+                  <li className="col-span-3 text-black transition duration-150 rounded-md md:hidden dark:hover:bg-gray-900 hover:bg-slate-400 dark:text-white">
+                    <NavigationMenu.Link asChild>
+                      <Link
+                        href="/projects"
+                        className={
+                          "focus:shadow-[0_0_0_2px] flex items-center justify-between focus:shadow-violet7 hover:bg-mauve3 select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors"
+                        }
+                      >
+                        <p className="font-bold leading-[1.2]">
+                          See all projects
+                        </p>
+
+                        <ArrowRightIcon className="w-5 h-5" />
+                      </Link>
+                    </NavigationMenu.Link>
+                  </li>
                 </ul>
               </NavigationMenu.Content>
             </NavigationMenu.Item>
 
             <NavigationMenu.Item>
-              <NavigationMenu.Trigger className="hover:bg-gray-700 h-full group flex select-none items-center justify-between gap-[2px] rounded-full px-3 py-2 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
+              <NavigationMenu.Trigger className="dark:hover:bg-gray-700 hover:bg-slate-400 h-full group flex select-none items-center justify-between gap-[2px] rounded-full px-3 py-2 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
                 Blog
               </NavigationMenu.Trigger>
               <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full sm:w-auto">
-                <ul className="m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-5">
-                  <li className="grid col-span-2 row-span-3">
+                <ul className="m-0 grid list-none gap-[10px] p-[22px] sm:w-[500px] sm:grid-cols-5">
+                  <li className="hidden col-span-2 row-span-3 md:grid">
                     <NavigationMenu.Link asChild>
                       <Link
                         className="focus:shadow-green-500 from-green-500 to-cyan-500 flex
@@ -144,7 +199,7 @@ export default function Navbar({
                   {blogPosts.map((post) => (
                     <li
                       key={post.slug}
-                      className="col-span-3 transition duration-150 rounded-md hover:bg-gray-900"
+                      className="col-span-3 text-black transition duration-150 rounded-md dark:hover:bg-gray-900 hover:bg-slate-400 dark:text-white"
                     >
                       <NavigationMenu.Link asChild>
                         <Link
@@ -156,20 +211,39 @@ export default function Navbar({
                           <div className="mb-[5px] font-bold leading-[1.2]">
                             {post.title}
                           </div>
-                          <p className="font-medium leading-[1.4]">
-                            Categories: {post.categories.join(", ")}
-                          </p>
+                          {post.categories && post.categories.length > 0 && (
+                            <p className="font-medium leading-[1.4]">
+                              Categories: {post.categories.join(", ")}
+                            </p>
+                          )}
                         </Link>
                       </NavigationMenu.Link>
                     </li>
                   ))}
+
+                  <li className="col-span-3 text-black transition duration-150 rounded-md md:hidden dark:hover:bg-gray-900 hover:bg-slate-400 dark:text-white">
+                    <NavigationMenu.Link asChild>
+                      <Link
+                        href="/blog"
+                        className={
+                          "focus:shadow-[0_0_0_2px] flex items-center justify-between focus:shadow-violet7 hover:bg-mauve3 select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors"
+                        }
+                      >
+                        <p className="font-bold leading-[1.2]">
+                          See all blog posts
+                        </p>
+
+                        <ArrowRightIcon className="w-5 h-5" />
+                      </Link>
+                    </NavigationMenu.Link>
+                  </li>
                 </ul>
               </NavigationMenu.Content>
             </NavigationMenu.Item>
 
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="hover:bg-gray-700 h-full items-center flex select-none rounded-full px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
+                className="dark:hover:bg-gray-700 hover:bg-slate-400 h-full items-center flex select-none rounded-full px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
                 asChild
               >
                 <Link href="/about">About</Link>
@@ -191,7 +265,7 @@ export default function Navbar({
         </NavigationMenu.Root>
       </div>
 
-      <div className="flex items-center">
+      <div className="items-center hidden md:flex">
         <Button link rainbow href="mailto:contact@jackmerrill.com">
           Contact
         </Button>

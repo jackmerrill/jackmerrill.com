@@ -2,8 +2,8 @@
 
 import { CopyIcon } from "@radix-ui/react-icons";
 import { CopyCheckIcon } from "lucide-react";
-import React, { useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import React, { useEffect, useState } from "react";
+import { PrismAsync as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const CodeBlock = ({
@@ -32,6 +32,7 @@ const CodeBlock = ({
   };
 
   const match = /language-(\w+)/.exec(className || "");
+
   return !inline && match ? (
     <div className="relative">
       <SyntaxHighlighter

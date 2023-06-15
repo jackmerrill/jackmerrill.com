@@ -62,7 +62,7 @@ export default function ProjectModal({
     <Dialog.Root open onOpenChange={handleOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="bg-zinc-900 opacity-75 data-[state=open]:animate-overlayShow fixed inset-0" />
-        <Dialog.Content className="data-[state=open]:animate-contentShow overflow-y-scroll fixed top-[50%] left-[50%] w-[90vw] max-h-[85vh] max-w-[50vw] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white dark:bg-zinc-800 px-8 py-12 shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
+        <Dialog.Content className="data-[state=open]:animate-contentShow overflow-y-scroll fixed top-[50%] left-[50%] w-[90vw] max-h-[85vh] md:max-w-[50vw] max-w-[90vw] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white dark:bg-zinc-800 px-8 py-12 shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
           <Dialog.Title
             className={cn(
               "dark:text-white text-indigo-600 m-0 text-6xl font-bold",

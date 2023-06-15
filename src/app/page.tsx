@@ -15,7 +15,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <section className="flex items-center px-6 py-48 mx-auto h-2/3 max-w-7xl">
+      <section className="flex items-center px-6 py-48 mx-auto text-black dark:text-white h-2/3 max-w-7xl">
         <div className="space-y-4">
           <h1 className="flex items-center text-6xl font-bold gap-x-4">
             <Twemoji
@@ -38,15 +38,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 py-28 bg-zinc-900">
+      <section className="px-6 py-28 dark:bg-zinc-900 bg-slate-100">
         <div className="flex flex-col items-center mx-auto space-y-4 max-w-7xl">
           <h2 className="text-4xl font-bold">What I do</h2>
 
-          <div className="grid grid-cols-4 gap-x-4">
-            <div className="grid items-center grid-rows-2 p-4 group gap-y-2 bg-zinc-800">
+          <div className="grid gap-4 text-black md:grid-cols-2 lg:grid-cols-4 dark:text-zinc-100">
+            <div className="grid items-center grid-rows-2 p-4 group gap-y-2 dark:bg-zinc-800 bg-slate-300">
               <div></div>
               <div className="space-y-2">
-                <FrameIcon className="w-12 h-12 transition-colors duration-150 text-zinc-100 group-hover:text-pink-500" />
+                <FrameIcon className="w-12 h-12 transition-colors duration-150 group-hover:text-pink-500" />
                 <h3 className="text-2xl font-semibold">UI Design</h3>
                 <p className="text-lg">
                   Designing interfaces and websites that are accessible, usable,
@@ -55,10 +55,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid items-center grid-rows-2 p-4 group gap-y-2 bg-zinc-800">
+            <div className="grid items-center grid-rows-2 p-4 group gap-y-2 dark:bg-zinc-800 bg-slate-300">
               <div></div>
               <div className="space-y-2">
-                <CodeIcon className="w-12 h-12 transition-colors duration-150 text-zinc-100 group-hover:text-teal-500" />{" "}
+                <CodeIcon className="w-12 h-12 transition-colors duration-150 group-hover:text-teal-500" />{" "}
                 <h3 className="text-2xl font-semibold">Development</h3>
                 <p className="text-lg">
                   Building websites and software that are fast, responsive, and
@@ -67,10 +67,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid items-center grid-rows-2 p-4 group gap-y-2 bg-zinc-800">
+            <div className="grid items-center grid-rows-2 p-4 group gap-y-2 dark:bg-zinc-800 bg-slate-300">
               <div></div>
               <div className="space-y-2">
-                <MagicWandIcon className="w-12 h-12 transition-colors duration-150 text-zinc-100 group-hover:text-indigo-500" />{" "}
+                <MagicWandIcon className="w-12 h-12 transition-colors duration-150 group-hover:text-indigo-500" />{" "}
                 <h3 className="text-2xl font-semibold">Creative</h3>
                 <p className="text-lg">
                   Creating stunning designs and illustrations that are unique
@@ -79,10 +79,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid items-center grid-rows-2 p-4 group gap-y-2 bg-zinc-800">
+            <div className="grid items-center grid-rows-2 p-4 group gap-y-2 dark:bg-zinc-800 bg-slate-300">
               <div></div>
               <div className="space-y-2">
-                <ScissorsIcon className="w-12 h-12 transition-colors duration-150 text-zinc-100 group-hover:text-green-500" />{" "}
+                <ScissorsIcon className="w-12 h-12 transition-colors duration-150 group-hover:text-green-500" />{" "}
                 <h3 className="text-2xl font-semibold">Other</h3>
                 <p className="text-lg">
                   I&apos;m always looking to learn new things and expand my
@@ -95,8 +95,8 @@ export default function Home() {
       </section>
 
       <section className="px-6 py-28">
-        <div className="flex flex-col items-center mx-auto space-y-4 max-w-7xl">
-          <h2 className="text-4xl font-bold">
+        <div className="flex flex-col items-center mx-auto space-y-4 text-center max-w-7xl">
+          <h2 className="text-4xl font-bold text-black dark:text-zinc-100">
             Tell me about your next project
           </h2>
 
