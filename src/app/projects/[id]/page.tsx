@@ -100,14 +100,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export async function generateMetadata({ params }: { params: { id: string } }) {
   const { query: projectQuery, schema: projectSchema } = q("*")
     .filterByType("project")
-    .filter(`slug.current == "${params.slug}"`)
+    .filter(`slug.current == "${params.id}"`)
     .grab$({
       title: q.string(),
       subtitle: q.string(),
