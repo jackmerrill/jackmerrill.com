@@ -111,6 +111,8 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 
   const post = schema.parse(await client.fetch(query))[0];
 
+  const r = post.mainImage?.match(/(?<width>\d+)x(?<height>\d+)/);
+
   return {
     title: post.title,
     description: post.subtitle,
@@ -124,6 +126,8 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
       images: [
         {
           url: post.mainImage,
+          width: parseInt(r?.groups?.width ?? "400"),
+          height: parseInt(r?.groups?.height ?? "400"),
         },
       ],
     },

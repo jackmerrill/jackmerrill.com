@@ -115,6 +115,8 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 
   const project = projectSchema.parse(await client.fetch(projectQuery))[0];
 
+  const r = project.mainImage?.match(/(?<width>\d+)x(?<height>\d+)/);
+
   return {
     title: project.title,
     description: project.subtitle,
@@ -128,6 +130,8 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
       images: [
         {
           url: project.mainImage,
+          width: parseInt(r?.groups?.width ?? "400"),
+          height: parseInt(r?.groups?.height ?? "400"),
         },
       ],
     },
