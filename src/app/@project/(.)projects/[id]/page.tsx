@@ -12,7 +12,6 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import CodeBlock from "@/components/Codeblock";
 import Image from "next/image";
-import { useNextSanityImage } from "next-sanity-image";
 
 type Project = {
   title: string;
