@@ -96,3 +96,31 @@ export async function generateStaticParams() {
 
   return slugs.map((slug) => ({ params: { id: slug } }));
 }
+
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const { query, schema } = q("*")
+    .filterByType("post")
+    .filter(`slug.current == "${params.id}"`)
+    .grab$({
+      title: q.string(),
+      subtitle: q.string(),
+      publishedAt: q.date(),
+      mainImage: q("mainImage").grabOne$("asset->url", q.string().optional()),
+    })
+    .slice(0, 1);
+
+  const post = schema.parse(await client.fetch(query))[0];
+
+  return {
+    title: post.title,
+    description: post.subtitle,
+    image: post.mainImage,
+    date: post.publishedAt,
+    openGraph: {
+      type: "article",
+      publishedTime: post.publishedAt,
+      title: post.title,
+      description: post.subtitle,
+    },
+  };
+}

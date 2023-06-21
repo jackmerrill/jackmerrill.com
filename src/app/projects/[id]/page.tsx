@@ -99,3 +99,36 @@ export async function generateStaticParams() {
     },
   }));
 }
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { query: projectQuery, schema: projectSchema } = q("*")
+    .filterByType("project")
+    .filter(`slug.current == "${params.slug}"`)
+    .grab$({
+      title: q.string(),
+      subtitle: q.string(),
+      slug: q.slug("slug"),
+      publishedAt: q.date(),
+      content: q.string(),
+      mainImage: q("mainImage").grabOne$("asset->url", q.string().optional()),
+    });
+
+  const project = projectSchema.parse(await client.fetch(projectQuery))[0];
+
+  return {
+    title: project.title,
+    description: project.subtitle,
+    image: project.mainImage,
+    date: project.publishedAt,
+    openGraph: {
+      type: "article",
+      publishedDate: project.publishedAt,
+      title: project.title,
+      description: project.subtitle,
+    },
+  };
+}
