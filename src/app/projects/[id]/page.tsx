@@ -129,6 +129,11 @@ export async function generateMetadata({
       publishedDate: project.publishedAt,
       title: project.title,
       description: project.subtitle,
+      images: [
+        {
+          url: project.mainImage,
+        },
+      ],
     },
   };
 }

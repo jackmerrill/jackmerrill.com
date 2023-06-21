@@ -121,6 +121,11 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
       publishedTime: post.publishedAt,
       title: post.title,
       description: post.subtitle,
+      images: [
+        {
+          url: post.mainImage,
+        },
+      ],
     },
   };
 }
