@@ -57,7 +57,7 @@ export default async function Page({
       </div>
 
       {/* the content */}
-      <article className="mx-auto prose dark:prose-invert prose-zinc max-w-7xl lg:prose-xl">
+      <article className="px-4 mx-auto prose dark:prose-invert prose-zinc max-w-7xl lg:prose-xl">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw]}
