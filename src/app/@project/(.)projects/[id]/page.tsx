@@ -87,17 +87,20 @@ export default function ProjectModal({
                 {
                   code: CodeBlock,
                   img: ({ ...props }) => {
-                    const { width, height } = props.src.match(
-                      /(?<width>\d+)x(?<height>\d+)/
-                    ).groups;
-                    return (
-                      <Image
-                        src={props.src}
-                        alt={props.alt}
-                        width={width}
-                        height={height}
-                      />
-                    );
+                    const r = props.src.match(/(?<width>\d+)x(?<height>\d+)/);
+                    if (r && r.groups) {
+                      return (
+                        <Image
+                          src={props.src}
+                          alt={props.alt}
+                          width={r?.groups.width}
+                          height={r?.groups.height}
+                        />
+                      );
+                    } else {
+                      // fallback to normal img
+                      return <img {...props} />;
+                    }
                   },
                 } as any
               }
