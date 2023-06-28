@@ -83,6 +83,12 @@ export default function Navbar({
               Contact
             </Link>
           </ContextMenuItem>
+
+          <ContextMenuItem asChild>
+            <Link href="/Resume.pdf" className="cursor-pointer">
+              Resume
+            </Link>
+          </ContextMenuItem>
         </ContextMenuContent>
       </ContextMenu>
 
