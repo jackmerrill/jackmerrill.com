@@ -9,5 +9,10 @@ export async function GET(
   );
   const headers = { "content-type": "application/json" };
   const body = JSON.stringify(await response.json());
-  return new Response(body, { headers });
+  return new Response(body, {
+    headers: {
+      ...headers,
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
 }
