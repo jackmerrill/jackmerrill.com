@@ -1,0 +1,151 @@
+---
+import { Image } from "astro:assets"
+import memoji from '../assets/memoji.png'
+import SpotifyNowPlaying from '../components/SpotifyNowPlaying'
+import SocialNetworks from '../components/SocialNetworks'
+import TechStack from '../components/TechStack'
+import WAIWO from '../components/WAIWO'
+import PictureShowcase from '../components/PictureShowcase'
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="stylesheet" href="/css/sentient.css">
+		<title>Astro</title>
+	</head>
+	<body class="font-serif text-white bg-gradient-to-b from-[#060009] to-[#08000B] min-h-[100svh] py-6">
+		<main class="mx-auto max-w-4xl grid grid-cols-2 gap-x-3 gap-y-4">
+			<div class="flex flex-col gap-y-4">
+				<section class="border border-[#1E1B22] rounded-3xl p-8 gap-y-3 flex flex-col">
+					<div class="flex justify-between">
+						<Image src={memoji} alt="Memoji" width={100} height={100} class="rounded-full" />
+	
+						<span class="flex h-min px-2 py-1 items-center text-xs gap-2 rounded-full border-2 border-[#248115] bg-[#299417]">
+							<span class="flex w-[10px] h-[10px] p-0.5 items-center rounded-full border-2 border-[#267918] bg-[#299417]"></span>
+							Available to work
+						</span>
+					</div>
+	
+					<h1 class="font-medium text-2xl">Hey, I&apos;m Jack!</h1>
+					<p class="font-light text-sm">
+						I&apos;m a UI/UX designer and front-end developer
+						based in Western Massachussetts currently studying
+						interface design at <a href="https://hampshire.edu" target="_blank" rel="noreferrer" class="underline">Hampshire College</a>.
+						<br />
+						<br />
+						I&apos;m a huge transit nerd, and when I&apos;m not
+						programming, I&apos;m either out on my skateboard or
+						gaming, or occasionally doing drone photography.
+					</p>
+	
+					<h2 class="font-medium text-lg">What I&apos;m listening to</h2>
+	
+					<SpotifyNowPlaying client:idle />
+	
+					<SocialNetworks />
+				</section>
+	
+				<section class="border border-[#1E1B22] rounded-3xl p-8 gap-y-3 flex flex-col">
+					<h1 class="font-medium text-2xl">Tech Stack</h1>
+	
+					<TechStack />
+				</section>
+			</div>
+			
+			<div class="flex flex-col gap-y-4">
+				<WAIWO client:idle />
+
+				<!-- Cal.com -->
+				<a
+					href="https://cal.com/jackmerrill"
+					target="_blank"
+					class="flex p-4 items-start gap-3 self-stretch rounded-2xl border border-[#3C42E6] bg-gradient-to-r from-[#4F7FF8] to-[#2A246B]"
+				>
+					<div class="flex flex-col justify-center items-start flex-1 self-stretch">
+						<h2 class="text-base font-normal">
+							Meet with me
+						</h2>
+	
+						<p class="text-white/60 font-light text-xs truncate max-w-[250px]">
+							Find a time on Cal.com
+						</p>
+					</div>
+
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+					</svg>
+				</a>
+
+				<!-- Resume -->
+				<a
+					href="/resume.pdf"
+					target="_blank"
+					class="flex p-4 items-start gap-3 self-stretch rounded-2xl border border-[#6B6B6B] bg-gradient-to-r from-[#6B6B6B] to-[#959595]"
+				>
+					<div class="flex flex-col justify-center items-start flex-1 self-stretch">
+						<h2 class="text-base font-normal">
+							View my Resume
+						</h2>
+	
+						<p class="text-white/60 font-light text-xs truncate max-w-[250px]">
+							Look at my past experience
+						</p>
+					</div>
+
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+					</svg>
+				</a>
+
+				<PictureShowcase client:idle />
+
+				<!-- Support me -->
+				<a
+					href="https://liberapay.com/jackmerrill/"
+					target="_blank"
+					class="flex p-4 items-start gap-3 self-stretch rounded-2xl border border-[#FF2323] bg-gradient-to-r from-[#F96C6C] to-[#FF2323]"
+				>
+					<div class="flex flex-col justify-center items-start flex-1 self-stretch">
+						<h2 class="text-base font-normal">
+							Support me
+						</h2>
+	
+						<p class="text-white/60 font-light text-xs truncate max-w-[250px]">
+							Like what I do? Help me continue!
+						</p>
+					</div>
+
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+					</svg>
+				</a>
+
+				<!-- The Hamper -->
+				<a
+					href="https://thehamper.netlify.app"
+					target="_blank"
+					class="flex p-4 items-start gap-3 self-stretch rounded-2xl border border-[#C623FF] bg-gradient-to-r from-[#E848CE] to-[#996CF9]"
+				>
+					<div class="flex flex-col justify-center items-start flex-1 self-stretch">
+						<h2 class="text-base font-normal">
+							The Hamper
+						</h2>
+	
+						<p class="text-white/60 font-light text-xs truncate max-w-[250px]">
+							Buy my merch
+						</p>
+					</div>
+
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+					</svg>
+				</a>
+			</div>
+		</main>
+	</body>
+</html>
