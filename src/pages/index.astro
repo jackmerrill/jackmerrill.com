@@ -7,30 +7,40 @@ import TechStack from '../components/TechStack'
 import WAIWO from '../components/WAIWO'
 import PictureShowcase from '../components/PictureShowcase'
 import { SEO } from 'astro-seo'
+import Pic1 from '../assets/img/DJI_0565.JPG'
+import Pic2 from '../assets/img/DJI_0605.JPG'
+import Pic3 from '../assets/img/IMG_0196.JPG'
+import Pic4 from '../assets/img/IMG_3942.JPG'
+import type { Picture } from "../components/Carousel"
 
 const pictures = [
   {
     title: "Drone Picture of Hampshire College",
-    image: "/img/DJI_0565.JPG",
+    image: Pic1,
   },
   {
     title: "Drone Picture of Hampshire College (winter)",
-    image: "/img/DJI_0605.JPG",
+	image: Pic2,
   },
   {
     title: "Bean!!",
-    image: "/img/IMG_0196.JPG",
+	image: Pic3,
   },
   {
     title: "Ricky!!",
-    image: "/img/IMG_3942.JPG",
+	image: Pic4,
   },
 ];
 
+let optimizedImages: Picture[] = [];
+
 for (const picture of pictures) {
-	const imported = await import(`../assets${picture.image}`);
-  const image = await getImage(imported.default);
-  picture.image = image.src;
+  const image = await getImage(picture.image);
+
+  optimizedImages.push({
+	title: picture.title,
+	image: image.src,
+  });
 }
 ---
 
