@@ -34,13 +34,6 @@ const Carousel = ({ pictures }: { pictures: Picture[] }) => {
     return false;
   };
 
-  //   useEffect(() => {
-  //     if (carousel !== null && carousel.current !== null) {
-  //       (carousel.current as any).scrollLeft =
-  //         (carousel.current as any).offsetWidth * currentIndex;
-  //     }
-  //   }, [currentIndex]);
-
   function getClassnames(picture: Picture, index: number): string {
     switch (index) {
       case currentIndex: // current
@@ -53,13 +46,6 @@ const Carousel = ({ pictures }: { pictures: Picture[] }) => {
         return "hidden";
     }
   }
-
-  //   useEffect(() => {
-  //     maxScrollWidth.current = carousel.current
-  //       ? (carousel.current as any).scrollWidth -
-  //         (carousel.current as any).offsetWidth
-  //       : 0;
-  //   }, []);
 
   return (
     <div className="relative w-full">
@@ -87,15 +73,6 @@ const Carousel = ({ pictures }: { pictures: Picture[] }) => {
                   className="object-cover h-64 w-full"
                 />
               </a>
-              {/* <a
-                href={resource.image || ""}
-                target="_blank"
-                className="h-full w-full aspect-square block absolute top-0 left-0 transition-opacity duration-300 opacity-0 hover:opacity-100 bg-black/30 z-10"
-              >
-                <h3 className="text-white py-6 px-3 mx-auto text-xl">
-                  {resource.title}
-                </h3>
-              </a> */}
             </div>
           );
         })}
@@ -129,9 +106,9 @@ const Carousel = ({ pictures }: { pictures: Picture[] }) => {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M5 1 1 5l4 4"
             />
           </svg>
@@ -155,9 +132,9 @@ const Carousel = ({ pictures }: { pictures: Picture[] }) => {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="m1 9 4-4-4-4"
             />
           </svg>
