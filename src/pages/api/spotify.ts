@@ -18,7 +18,7 @@ export const GET: APIRoute = async ({ params, request }) => {
       artist: track.artist["#text"],
       album: {
         name: track.album["#text"],
-        image: track.image[3]["#text"],
+        image: track.image[1]["#text"], // medium size
       },
       song: track.name,
       nowPlaying: track["@attr"]?.nowplaying || false,
