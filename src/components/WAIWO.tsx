@@ -20,8 +20,13 @@ export default function WAIWO() {
           href={`https://github.com/${repo.repo}`}
           target="_blank"
           rel="noreferrer"
+          title="View on GitHub"
         >
-          <img className="flex-1 self-stretch rounded-xl" src={repo.image} />
+          <img
+            className="flex-1 self-stretch rounded-xl"
+            src={repo.image}
+            alt={repo.repo}
+          />
         </a>
       ) : (
         <div className="block w-full h-40 rounded-xl bg-gray-200 animate-pulse"></div>

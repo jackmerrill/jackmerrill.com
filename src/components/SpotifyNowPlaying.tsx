@@ -38,6 +38,7 @@ export default function SpotifyNowPlaying() {
             <img
               src={nowPlaying.album.image}
               className="rounded-xl w-10 h-10 absolute opacity-50"
+              alt={nowPlaying.album.name}
             />
 
             <a
@@ -45,6 +46,7 @@ export default function SpotifyNowPlaying() {
               target="_blank"
               rel="noreferrer"
               className="z-50 text-white"
+              title="View on Last.fm"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
