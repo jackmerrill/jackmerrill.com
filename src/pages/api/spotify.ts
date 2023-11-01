@@ -1,3 +1,5 @@
+export const prerender = false;
+
 import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async ({ params, request }) => {
@@ -21,6 +23,12 @@ export const GET: APIRoute = async ({ params, request }) => {
       song: track.name,
       nowPlaying: track["@attr"]?.nowplaying || false,
       url: track.url,
-    })
+    }),
+    {
+      headers: {
+        "content-type": "application/json;charset=UTF-8",
+      },
+      status: 200,
+    }
   );
 };

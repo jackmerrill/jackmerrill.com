@@ -6,7 +6,7 @@ import SocialNetworks from '../components/SocialNetworks'
 import TechStack from '../components/TechStack'
 import WAIWO from '../components/WAIWO'
 import PictureShowcase from '../components/PictureShowcase'
-
+import { SEO } from 'astro-seo'
 ---
 
 <html lang="en">
@@ -16,7 +16,13 @@ import PictureShowcase from '../components/PictureShowcase'
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="stylesheet" href="/css/sentient.css">
-		<title>Jack Merrill</title>
+		<SEO
+			title="Jack Merrill"
+			description="UI/UX designer and front-end developer based in Western Massachussetts."
+			twitter={{
+			creator: "@jack__merrill"
+			}}
+	  	/>
 	</head>
 	<body class="font-serif text-white bg-gradient-to-b from-[#060009] to-[#08000B] min-h-[100svh] py-6">
 		<main class="mx-auto max-w-4xl grid grid-cols-2 gap-x-3 gap-y-4">

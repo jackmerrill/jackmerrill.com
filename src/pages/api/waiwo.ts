@@ -1,3 +1,5 @@
+export const prerender = false;
+
 import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async ({ params, request }) => {
@@ -32,5 +34,10 @@ export const GET: APIRoute = async ({ params, request }) => {
     return new Response(JSON.stringify({ image: null, repo }), { status: 404 });
   }
 
-  return new Response(JSON.stringify({ image: image[0], repo }));
+  return new Response(JSON.stringify({ image: image[0], repo }), {
+    status: 200,
+    headers: {
+      "content-type": "application/json;charset=UTF-8",
+    },
+  });
 };
