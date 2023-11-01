@@ -6,7 +6,6 @@ export type Picture = {
 };
 
 const Carousel = ({ pictures }: { pictures: Picture[] }) => {
-  const maxScrollWidth = useRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carousel = useRef(null);
 
@@ -46,17 +45,6 @@ const Carousel = ({ pictures }: { pictures: Picture[] }) => {
         return "hidden";
     }
   }
-
-  useEffect(() => {
-    const int = setInterval(() => {
-      if (currentIndex < pictures.length - 1) {
-        setCurrentIndex((prevState) => prevState + 1);
-      } else {
-        setCurrentIndex(0);
-      }
-    }, 7500);
-    return () => clearInterval(int);
-  }, []);
 
   return (
     <div className="relative w-full">
