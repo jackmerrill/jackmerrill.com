@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets"
+import { Image, getImage } from "astro:assets"
 import memoji from '../assets/memoji.png'
 import SpotifyNowPlaying from '../components/SpotifyNowPlaying'
 import SocialNetworks from '../components/SocialNetworks'
@@ -7,6 +7,31 @@ import TechStack from '../components/TechStack'
 import WAIWO from '../components/WAIWO'
 import PictureShowcase from '../components/PictureShowcase'
 import { SEO } from 'astro-seo'
+
+const pictures = [
+  {
+    title: "Drone Picture of Hampshire College",
+    image: "/img/DJI_0565.JPG",
+  },
+  {
+    title: "Drone Picture of Hampshire College (winter)",
+    image: "/img/DJI_0605.JPG",
+  },
+  {
+    title: "Bean!!",
+    image: "/img/IMG_0196.JPG",
+  },
+  {
+    title: "Ricky!!",
+    image: "/img/IMG_3942.JPG",
+  },
+];
+
+for (const picture of pictures) {
+	const imported = await import(`../assets${picture.image}`);
+  const image = await getImage(imported.default);
+  picture.image = image.src;
+}
 ---
 
 <html lang="en">
@@ -108,7 +133,7 @@ import { SEO } from 'astro-seo'
 					</svg>
 				</a>
 
-				<PictureShowcase client:idle />
+				<PictureShowcase client:idle pictures={pictures} />
 
 				<!-- Support me -->
 				<a
