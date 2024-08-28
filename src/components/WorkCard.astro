@@ -1,0 +1,50 @@
+---
+import type { MarkdownInstance } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  post: MarkdownInstance<Record<string, any>>;
+}
+
+const { post } = Astro.props;
+const postId = post.url!.split("/")[2];
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/img/work/*-thumb.{jpeg,jpg,png,gif}"
+);
+
+if (
+  !images[`/src/assets/img/work/${postId}-thumb.png`] &&
+  post.frontmatter.image
+)
+  throw new Error(
+    `"/src/assets/img/work/${postId}-thumb.png" does not exist in glob: "/src/assets/work/**/*-thumb.{jpeg,jpg,png,gif}"`
+  );
+---
+
+<a
+  href={post.url}
+  class="border border-[#1E1B22] rounded-3xl p-8 gap-y-5 flex justify-between items-center mb-8"
+>
+  <div class="flex justify-between">
+    <div class="flex flex-row space-x-2">
+      {
+        post.frontmatter.image && (
+          <Image
+            src={images[`/src/assets/img/work/${postId}-thumb.png`]()}
+            class="w-40 h-24 object-contain"
+            alt={post.frontmatter.title}
+            inferSize={true}
+          />
+        )
+      }
+
+      <div class="flex flex-col space-y-1 max-w-96">
+        <h2 class="text-2xl font-bold mb-4">
+          {post.frontmatter.title}
+        </h2>
+        <p>{post.frontmatter.description}</p>
+      </div>
+    </div>
+  </div>
+  <h2 class="text-2xl font-bold mb-4">View →</h2>
+</a>

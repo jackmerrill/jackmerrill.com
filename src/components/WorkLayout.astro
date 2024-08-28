@@ -1,0 +1,92 @@
+---
+import { Image } from "astro:assets";
+import Layout from "./Layout.astro";
+
+const { frontmatter } = Astro.props;
+
+const postId = frontmatter.url!.split("/")[2];
+---
+
+<Layout>
+  <div class="col-span-2">
+    <div
+      class="border border-[#1E1B22] rounded-3xl p-8 gap-y-5 flex justify-between items-center mb-8"
+    >
+      <a href="/work" class="text-2xl font-bold">← Back</a>
+
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        width="1080px"
+        height="1080px"
+        viewBox="0 0 1080 1080"
+        style="enable-background:new 0 0 1080 1080;"
+        xml:space="preserve"
+        class="w-16 h-16 scale-150"
+      >
+        <path
+          fill="currentColor"
+          d="M714.82,280.16l-94.47,163.37l-80.35,7.84l-80.36-7.84l-94.47-163.37L262.55,457.94l129.9,341.89h295.11l129.9-341.89
+              L714.82,280.16z M523.47,766.75h-108.2L299.05,460.87l66.15-114.58l74.32,128.52l83.94,8.19V766.75z M664.73,766.75h-108.2V483
+              l83.94-8.19l74.32-128.52l66.15,114.58L664.73,766.75z"
+        ></path>
+      </svg>
+
+      <h2 class="text-2xl font-bold">Jack Merrill</h2>
+    </div>
+  </div>
+
+  {
+    frontmatter.image && (
+      <div class="col-span-2 border border-[#1E1B22] rounded-3xl p-8 gap-y-5 flex justify-between items-center mb-8">
+        <Image
+          src={import(`/src/assets/img/work/${postId}-thumb.png`)}
+          alt={frontmatter.title}
+          width={960}
+        />
+      </div>
+    )
+  }
+
+  <div class="flex flex-row justify-between items-center col-span-2">
+    <div>
+      <h2 class="text-2xl font-bold">{frontmatter.title}</h2>
+      <p class="text-lg">{frontmatter.description}</p>
+    </div>
+
+    {
+      frontmatter.link && (
+        <a
+          href={frontmatter.link}
+          target="_blank"
+          class="text-2xl font-bold cursor-pointer text-white bg-blue-500 rounded-md px-4 py-2 items-center flex flex-row gap-x-2"
+        >
+          Visit
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+            />
+          </svg>
+        </a>
+      )
+    }
+  </div>
+
+  <article
+    class="col-span-2 pb-12 prose max-w-full lg:prose-xl prose-h1:font-bold prose-h2:font-bold prose-invert break-words"
+  >
+    <slot />
+  </article>
+</Layout>

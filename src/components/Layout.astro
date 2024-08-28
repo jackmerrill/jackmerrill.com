@@ -1,0 +1,40 @@
+---
+import { SEO } from "astro-seo";
+import Pride from "./Pride.astro";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="/css/sentient.css" />
+    <SEO
+      title="Jack Merrill"
+      description="UI/UX designer and front-end developer based in Western Massachussetts."
+      twitter={{
+        creator: "@jack__merrill",
+      }}
+    />
+  </head>
+  <body
+    class="font-serif text-white bg-gradient-to-b from-[#060009] to-[#08000B] min-h-[100svh]"
+  >
+    <Pride />
+    <main
+      class="mx-auto max-w-4xl grid md:grid-cols-2 px-2 gap-x-3 gap-y-4 my-6"
+    >
+      <header
+        class="bg-green-700 rounded-lg px-4 py-3 col-span-2 text-lg font-bold"
+      >
+        👋 I'm currently urgently looking for work! If you have any
+        opportunities or know of any, please reach out to me at{" "}
+        <a href="mailto:jobs@jackmerrill.com" class="underline">
+          jobs at jackmerrill dot com
+        </a>
+      </header>
+      <slot />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../components/Layout.astro";
+import WorkCard from "@components/WorkCard.astro";
+
+const posts = await Astro.glob("./**/*.md");
+---
+
+<Layout>
+  <div class="col-span-2">
+    <div
+      class="border border-[#1E1B22] rounded-3xl p-8 gap-y-5 flex justify-between items-center mb-8"
+    >
+      <a href="/" class="text-2xl font-bold">← Back</a>
+
+      <svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        width="1080px"
+        height="1080px"
+        viewBox="0 0 1080 1080"
+        style="enable-background:new 0 0 1080 1080;"
+        xml:space="preserve"
+        class="w-16 h-16 scale-150"
+      >
+        <path
+          fill="currentColor"
+          d="M714.82,280.16l-94.47,163.37l-80.35,7.84l-80.36-7.84l-94.47-163.37L262.55,457.94l129.9,341.89h295.11l129.9-341.89
+              L714.82,280.16z M523.47,766.75h-108.2L299.05,460.87l66.15-114.58l74.32,128.52l83.94,8.19V766.75z M664.73,766.75h-108.2V483
+              l83.94-8.19l74.32-128.52l66.15,114.58L664.73,766.75z"
+        ></path>
+      </svg>
+
+      <h2 class="text-2xl font-bold">Jack Merrill</h2>
+    </div>
+
+    <h1 class="text-4xl font-bold mb-4">My Work</h1>
+    <p class="mb-4">
+      I love making random and cool shit. Here's where I can show it off.
+    </p>
+  </div>
+
+  <div class="col-span-2">
+    {posts.map((post) => <WorkCard post={post} />)}
+  </div>
+</Layout>

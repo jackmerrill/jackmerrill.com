@@ -1,4 +1,8 @@
-import { defineConfig } from "astro/config";
+import {
+  defineConfig,
+  passthroughImageService,
+  squooshImageService,
+} from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 
@@ -9,7 +13,7 @@ export default defineConfig({
   integrations: [tailwind(), react()],
   output: "hybrid",
   adapter: vercel({
-    imageService: true,
+    // imageService: true,
     webAnalytics: {
       enabled: true,
     },
@@ -18,4 +22,7 @@ export default defineConfig({
     },
     functionPerRoute: true,
   }),
+  image: {
+    service: squooshImageService(),
+  },
 });

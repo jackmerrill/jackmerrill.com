@@ -1,0 +1,73 @@
+---
+
+---
+
+<style>
+  .pride {
+    background: linear-gradient(
+      90deg,
+      #fff 0%,
+      #fff 10%,
+      #ffafc8 10%,
+      #ffafc8 20%,
+      #74d7ee 20%,
+      #74d7ee 30%,
+      #613915 30%,
+      #613915 40%,
+      #e40303 40%,
+      #e40303 50%,
+      #ff8c00 50%,
+      #ff8c00 60%,
+      #ffed00 60%,
+      #ffed00 70%,
+      #008026 70%,
+      #008026 80%,
+      #24408e 80%,
+      #24408e 90%,
+      #732982 90%,
+      #732982 100%
+    );
+  }
+
+  .box {
+    position: relative;
+    transform-style: preserve-3d;
+    border-radius: 0px;
+  }
+  .box::before {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    background: linear-gradient(
+      90deg,
+      #fff 0%,
+      #fff 10%,
+      #ffafc8 10%,
+      #ffafc8 20%,
+      #74d7ee 20%,
+      #74d7ee 30%,
+      #613915 30%,
+      #613915 40%,
+      #e40303 40%,
+      #e40303 50%,
+      #ff8c00 50%,
+      #ff8c00 60%,
+      #ffed00 60%,
+      #ffed00 70%,
+      #008026 70%,
+      #008026 80%,
+      #24408e 80%,
+      #24408e 90%,
+      #732982 90%,
+      #732982 100%
+    );
+    filter: blur(18px);
+    transform: translate3d(0px, 0px, -1px);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+</style>
+
+<div class="box">
+  <hr class="pride w-full h-4 border-transparent pb-4" />
+</div>
