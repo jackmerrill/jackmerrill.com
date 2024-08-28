@@ -13,7 +13,7 @@ export default defineConfig({
   integrations: [tailwind(), react()],
   output: "hybrid",
   adapter: vercel({
-    // imageService: true,
+    imageService: true,
     webAnalytics: {
       enabled: true,
     },
@@ -22,7 +22,7 @@ export default defineConfig({
     },
     functionPerRoute: true,
   }),
-  image: {
-    service: squooshImageService(),
-  },
+  // image: {
+  //   service: passthroughImageService(),
+  // },
 });

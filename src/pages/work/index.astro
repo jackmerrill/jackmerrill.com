@@ -2,8 +2,9 @@
 import { Image } from "astro:assets";
 import Layout from "../../components/Layout.astro";
 import WorkCard from "@components/WorkCard.astro";
+import { getCollection } from "astro:content";
 
-const posts = await Astro.glob("./**/*.md");
+const posts = await getCollection("work");
 ---
 
 <Layout>
@@ -44,6 +45,32 @@ const posts = await Astro.glob("./**/*.md");
   </div>
 
   <div class="col-span-2">
-    {posts.map((post) => <WorkCard post={post} />)}
+    {
+      posts.map((post) => (
+        <a
+          href={`/work/${post.slug}`}
+          class="border border-[#1E1B22] rounded-3xl p-8 gap-y-5 flex justify-between items-center mb-8"
+        >
+          <div class="flex justify-between">
+            <div class="flex flex-row space-x-2">
+              {post.data.image && (
+                <Image
+                  src={post.data.image}
+                  class="w-40 h-24 object-contain"
+                  alt={post.data.title}
+                  inferSize={true}
+                />
+              )}
+
+              <div class="flex flex-col space-y-1 max-w-96">
+                <h2 class="text-2xl font-bold mb-4">{post.data.title}</h2>
+                <p>{post.data.description}</p>
+              </div>
+            </div>
+          </div>
+          <h2 class="text-2xl font-bold mb-4">View →</h2>
+        </a>
+      ))
+    }
   </div>
 </Layout>

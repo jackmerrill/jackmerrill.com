@@ -1,10 +1,29 @@
 ---
 import { Image } from "astro:assets";
-import Layout from "./Layout.astro";
+import Layout from "../../../components/Layout.astro";
+import { getCollection, getEntry } from "astro:content";
 
-const { frontmatter } = Astro.props;
+const { slug } = Astro.params;
 
-const postId = frontmatter.url!.split("/")[2];
+const post = await getEntry("work", slug as string);
+
+if (!post) {
+  return {
+    status: 404,
+  };
+}
+
+const { Content, headings } = await post.render();
+
+export async function getStaticPaths() {
+  const posts = await getCollection("work");
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
+  }));
+}
 ---
 
 <Layout>
@@ -40,27 +59,23 @@ const postId = frontmatter.url!.split("/")[2];
   </div>
 
   {
-    frontmatter.image && (
+    post.data.image && (
       <div class="col-span-2 border border-[#1E1B22] rounded-3xl p-8 gap-y-5 flex justify-between items-center mb-8">
-        <Image
-          src={import(`/src/assets/img/work/${postId}-thumb.png`)}
-          alt={frontmatter.title}
-          width={960}
-        />
+        <Image src={post.data.image} alt={post.data.title} width={960} />
       </div>
     )
   }
 
   <div class="flex flex-row justify-between items-center col-span-2">
     <div>
-      <h2 class="text-2xl font-bold">{frontmatter.title}</h2>
-      <p class="text-lg">{frontmatter.description}</p>
+      <h2 class="text-2xl font-bold">{post.data.title}</h2>
+      <p class="text-lg">{post.data.description}</p>
     </div>
 
     {
-      frontmatter.link && (
+      post.data.link && (
         <a
-          href={frontmatter.link}
+          href={post.data.link}
           target="_blank"
           class="text-2xl font-bold cursor-pointer text-white bg-blue-500 rounded-md px-4 py-2 items-center flex flex-row gap-x-2"
         >
@@ -87,6 +102,6 @@ const postId = frontmatter.url!.split("/")[2];
   <article
     class="col-span-2 pb-12 prose max-w-full lg:prose-xl prose-h1:font-bold prose-h2:font-bold prose-invert break-words"
   >
-    <slot />
+    <Content />
   </article>
 </Layout>

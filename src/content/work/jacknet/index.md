@@ -1,5 +1,4 @@
 ---
-layout: ../../../components/WorkLayout.astro
 title: JackNet
 description: "My various servers and services I host in my dorm room."
 ---

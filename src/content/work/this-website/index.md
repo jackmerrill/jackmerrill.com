@@ -1,5 +1,4 @@
 ---
-layout: ../../../components/WorkLayout.astro
 title: This Website
 description: "The website you're currently on. Built with Astro, Tailwind CSS, and MDX."
 image: "thumb.png"
