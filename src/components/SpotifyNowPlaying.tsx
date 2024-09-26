@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SiSpotify } from "@icons-pack/react-simple-icons";
+import { SiLastdotfm, SiSpotify } from "@icons-pack/react-simple-icons";
 import styles from "./nowplaying.module.scss";
 
 type NPRes = {
@@ -23,7 +23,7 @@ export default function SpotifyNowPlaying() {
 
   useEffect(() => {
     const int = setInterval(() => {
-      fetch("/api/spotify")
+      fetch("/api/music")
         .then((res) => res.json())
         .then((data) => setNowPlaying(data));
     }, 10000);
@@ -96,7 +96,7 @@ export default function SpotifyNowPlaying() {
       >
         {nowPlaying?.nowPlaying && <NowPlayingBars />}
 
-        <SiSpotify className="w-4 h-4" />
+        <SiLastdotfm className="w-4 h-4" />
       </div>
     </div>
   );
