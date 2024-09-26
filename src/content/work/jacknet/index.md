@@ -8,6 +8,7 @@ I host a variety of servers and services on my server, JackNet. These include:
 - [Authentication](https://auth.jackmerrill.com) - A Casdoor server I use for my other services.
 - Home Assistant - Connected to my various smart home devices. Likely have the "smartest" dorm on campus.
 - Jellyfin - A media server for my media.
+- Navidrome - Self-hosted music streaming server.
 - [Gitea](https://git.jackmerrill.com) - A self-hosted Git server.
 - Various Minecraft Servers - I host a variety of Minecraft servers for my friends and I to play on.
 - Bitwarden - A self-hosted password manager.
