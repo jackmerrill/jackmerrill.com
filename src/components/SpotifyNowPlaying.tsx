@@ -16,7 +16,7 @@ export default function SpotifyNowPlaying() {
   const [nowPlaying, setNowPlaying] = useState<NPRes | null>(null);
 
   useEffect(() => {
-    fetch("/api/spotify")
+    fetch("/api/music")
       .then((res) => res.json())
       .then((data) => setNowPlaying(data));
   }, []);
