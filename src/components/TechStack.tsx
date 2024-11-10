@@ -39,8 +39,8 @@ import {
   SiTypescriptHex,
   SiUnocss,
   SiUnocssHex,
-  SiVisualstudiocode,
-  SiVisualstudiocodeHex,
+  SiCodeiumHex,
+  SiCodeium,
 } from "@icons-pack/react-simple-icons";
 
 export default function TechStack() {
@@ -289,12 +289,12 @@ export default function TechStack() {
         {
           name: "VSCode",
           icon: (
-            <SiVisualstudiocode
+            <SiCodeium
               className="w-6 h-6"
               style={{
-                color: SiVisualstudiocodeHex,
+                color: SiCodeiumHex,
               }}
-            ></SiVisualstudiocode>
+            ></SiCodeium>
           ),
         },
       ],

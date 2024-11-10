@@ -29,7 +29,7 @@ export async function getStaticPaths() {
 <Layout>
   <div class="col-span-2">
     <div
-      class="border border-[#1E1B22] rounded-3xl p-8 gap-y-5 flex justify-between items-center mb-8"
+      class="border border-white/10 rounded-md p-8 gap-y-5 flex justify-between items-center mb-8"
     >
       <a href="/work" class="text-2xl font-bold">← Back</a>
 
@@ -60,7 +60,7 @@ export async function getStaticPaths() {
 
   {
     post.data.image && (
-      <div class="col-span-2 border border-[#1E1B22] rounded-3xl p-8 gap-y-5 flex justify-between items-center mb-8">
+      <div class="col-span-2 border border-white/10 rounded-md p-8 gap-y-5 flex justify-between items-center mb-8">
         <Image src={post.data.image} alt={post.data.title} width={960} />
       </div>
     )

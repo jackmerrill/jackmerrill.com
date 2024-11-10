@@ -3,7 +3,7 @@ import {
   SiDribbble,
   SiGithub,
   SiSpotify,
-  SiTwitter,
+  SiX,
 } from "@icons-pack/react-simple-icons";
 
 export default function SocialNetworks() {
@@ -17,7 +17,7 @@ export default function SocialNetworks() {
     },
     {
       name: "Twitter",
-      icon: <SiTwitter className="w-3 h-3"></SiTwitter>,
+      icon: <SiX className="w-3 h-3"></SiX>,
       borderColor: "border-[#2B82BC]",
       bgColor: "bg-[#1D9BF0]",
       href: "https://twitter.com/jack__merrill",

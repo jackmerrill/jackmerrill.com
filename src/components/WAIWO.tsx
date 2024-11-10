@@ -12,7 +12,7 @@ export default function WAIWO() {
       .then((data) => setRepo(data));
   }, []);
   return (
-    <section className="border border-[#1E1B22] rounded-3xl p-8 gap-y-3 flex flex-col">
+    <section className="border border-white/10 rounded-md p-8 gap-y-3 flex flex-col">
       <h1 className="font-medium text-2xl">What I&apos;m working on</h1>
 
       {repo?.image ? (
@@ -23,13 +23,13 @@ export default function WAIWO() {
           title="View on GitHub"
         >
           <img
-            className="flex-1 self-stretch rounded-xl"
+            className="flex-1 self-stretch rounded-md"
             src={repo.image}
             alt={repo.repo}
           />
         </a>
       ) : (
-        <div className="block w-full h-40 rounded-xl bg-gray-200 animate-pulse"></div>
+        <div className="block w-full h-40 rounded-md bg-gray-200 animate-pulse"></div>
       )}
     </section>
   );

@@ -31,13 +31,13 @@ export default function SpotifyNowPlaying() {
   }, []);
 
   return (
-    <div className="flex p-4 items-end gap-3 self-stretch border border-[#1DB954] rounded-2xl bg-gradient-to-r from-[#11652F] to-[#417152]">
+    <div className="flex p-4 items-end gap-3 self-stretch border border-[#1DB954] rounded-md bg-gradient-to-r from-[#11652F] to-[#417152]">
       {nowPlaying ? (
         <>
           <div className="relative w-10 h-10 flex items-center justify-center">
             <img
               src={nowPlaying.album.image}
-              className="rounded-xl w-10 h-10 absolute opacity-50"
+              className="rounded-md w-10 h-10 absolute opacity-50"
               alt={nowPlaying.album.name}
             />
 
@@ -80,7 +80,7 @@ export default function SpotifyNowPlaying() {
         </>
       ) : (
         <>
-          <div className="block w-10 h-10 rounded-xl bg-white/10 animate-pulse" />
+          <div className="block w-10 h-10 rounded-md bg-white/10 animate-pulse" />
 
           <div className="flex flex-col justify-center items-start flex-1 self-stretch space-y-1">
             <div className="block h-3 w-28 bg-white/10 animate-pulse rounded-md"></div>
