@@ -19,20 +19,18 @@ import Pride from "./Pride.astro";
     />
   </head>
   <body
-    class="font-serif text-white bg-gradient-to-b from-[#060009] to-[#08000B] min-h-[100svh]"
+    class="font-serif text-white bg-[#060009] min-h-[100svh]"
   >
     <Pride />
     <main
-      class="mx-auto max-w-4xl grid md:grid-cols-2 px-2 gap-x-3 gap-y-4 my-6"
+      class="mx-auto max-w-4xl grid md:grid-cols-2 px-2 gap-x-3 gap-y-4 my-6 z-10"
     >
       <header
-        class="bg-green-700 rounded-lg col-span-full px-4 py-3 text-lg font-bold"
+        class="bg-green-700/20 border border-green-700 rounded-md col-span-full p-4 text-sm text-green-100 backdrop-blur-md"
       >
-        👋 I'm currently urgently looking for work! If you have any
-        opportunities or know of any, please reach out to me at{" "}
-        <a href="mailto:jobs@jackmerrill.com" class="underline">
-          jobs at jackmerrill dot com
-        </a>
+        <h1 class="font-bold">👋 I'm currently urgently looking for work!</h1>
+        <p>If you have any opportunities or know of any, please reach out to me at <a href="mailto:jobs@jackmerrill.com" class="underline">jobs at jackmerrill dot com</a></p>
+       
       </header>
       <slot />
     </main>

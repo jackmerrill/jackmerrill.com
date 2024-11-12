@@ -50,7 +50,7 @@ const Carousel = ({ pictures }: { pictures: Picture[] }) => {
     <div className="relative w-full">
       <div
         ref={carousel}
-        className="relative h-56 overflow-hidden rounded-xl md:h-64"
+        className="relative h-56 overflow-hidden rounded-md md:h-64"
       >
         {pictures.map((resource, index) => {
           return (

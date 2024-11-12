@@ -10,7 +10,7 @@ const posts = await getCollection("work");
 <Layout>
   <div class="col-span-2">
     <div
-      class="border border-[#1E1B22] rounded-3xl p-8 gap-y-5 flex justify-between items-center mb-8"
+      class="border border-white/10 rounded-md p-8 gap-y-5 flex justify-between items-center mb-8"
     >
       <a href="/" class="text-2xl font-bold">← Back</a>
 
@@ -49,7 +49,7 @@ const posts = await getCollection("work");
       posts.map((post) => (
         <a
           href={`/work/${post.slug}`}
-          class="border border-[#1E1B22] rounded-3xl p-8 gap-y-5 flex justify-between items-center mb-8"
+          class="border border-white/10 rounded-md p-8 gap-y-5 flex justify-between items-center mb-8"
         >
           <div class="flex justify-between">
             <div class="flex flex-row space-x-2">
